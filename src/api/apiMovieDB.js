@@ -27,6 +27,10 @@ export const getMovieVideos = (id) => {
 	return axios.get(`/movie/${id}/videos?api_key=${API_KEY}`)
 }
 
+export const getGenres = () => {
+	return axios.get(`/genre/movie/list?api_key=${API_KEY}`)
+}
+
 export const getConfiguration = () => {
 	return axios.get(`/configuration?api_key=${API_KEY}`)
 }
