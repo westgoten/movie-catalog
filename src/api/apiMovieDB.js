@@ -14,7 +14,9 @@ export const getMovieCredits = (id) => {
 }
 
 export const getMovieImages = (id) => {
-	return axios.get(`/movie/${id}/images?api_key=${API_KEY}`)
+	return axios.get(
+		`/movie/${id}/images?api_key=${API_KEY}&include_image_language=en,null`
+	)
 }
 
 export const getMovieRecommendations = (id, page = 1) => {

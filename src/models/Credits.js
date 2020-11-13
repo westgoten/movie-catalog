@@ -1,9 +1,13 @@
+import Actor from './Actor'
+import CrewMember from './CrewMember'
+
 class Credits {
 	constructor(data) {
 		this.id = data.id
-		this.cast = data.cast // TO DO: Create Actor model
-		this.crew = data.crew // TO DO: Create CrewMember model and replace this field for this.director and
-		// this.screenplay
+		this.cast = data.cast.map((actorData) => new Actor(actorData))
+		this.crew = data.crew.map(
+			(crewMemberData) => new CrewMember(crewMemberData)
+		)
 	}
 }
 
