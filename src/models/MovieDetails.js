@@ -15,6 +15,8 @@ class MovieDetails {
 		this.tagline = data.tagline
 		this.title = data.title
 		this.voteAverage = data.vote_average
+		this.fullPosterPath = null
+		this.fullBackdropPath = null
 	}
 }
 
