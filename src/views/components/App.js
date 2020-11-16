@@ -8,7 +8,7 @@ function App() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const response = await api.getCredits(724989)
+				const response = await api.getCredits(121)
 				console.log(response.data)
 			} catch (error) {
 				console.log(error.message)

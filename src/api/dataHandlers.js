@@ -21,7 +21,10 @@ const dataHandlers = {
 		// TO DO
 		if (data.success === undefined || data.success) {
 			const credits = new Credits(data)
-			credits.crew = credits.filterCrewByJob('director', 'screenplay')
+			credits.crew = credits.getMostPopularPersonByJob(
+				'director',
+				'screenplay'
+			)
 			return credits
 		}
 		return data

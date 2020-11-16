@@ -11,10 +11,30 @@ class Credits {
 	}
 
 	getMostPopularPersonByJob(...jobs) {
-		return this.filterCrewByJob(jobs).reduce(
-			(accumulator, currentElement) => accumulator,
+		// TO DO
+		return this.filterCrewByJob(...jobs).reduce(
+			(accumulator, crewMember) => {
+				for (let i = 0; i < accumulator.length; i++) {
+					const popularMember = accumulator[i]
+					if (popularMember.name === crewMember.name) {
+						return accumulator
+					} else if (
+						popularMember.job === crewMember.job &&
+						popularMember.popularity < crewMember.popularity
+					) {
+						accumulator[i] = crewMember
+						return accumulator
+					} else if (
+						popularMember.job === crewMember.job &&
+						popularMember.popularity >= crewMember.popularity
+					) {
+						return accumulator
+					}
+				}
+				return accumulator.concat(crewMember)
+			},
 			[]
-		) // TO DO
+		)
 	}
 
 	filterCrewByJob(...jobs) {
