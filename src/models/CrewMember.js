@@ -4,6 +4,7 @@ class CrewMember {
 		this.id = data.id
 		this.job = data.job
 		this.name = data.name
+		this.popularity = data.popularity
 	}
 }
 

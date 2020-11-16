@@ -18,7 +18,12 @@ const dataHandlers = {
 		return data
 	},
 	prepareCredits: (data) => {
-		if (data.success === undefined || data.success) return new Credits(data)
+		// TO DO
+		if (data.success === undefined || data.success) {
+			const credits = new Credits(data)
+			credits.crew = credits.filterCrewByJob('director', 'screenplay')
+			return credits
+		}
 		return data
 	},
 	prepareImages: (data) => {
@@ -32,6 +37,7 @@ const dataHandlers = {
 		return data
 	},
 	prepareVideos: (data) => {
+		// TO DO
 		if (data.success === undefined || data.success)
 			return new VideoList(data)
 		return data
