@@ -8,7 +8,7 @@ function App() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const response = await api.getVideos(121)
+				const response = await api.searchMovies('joão e maria')
 				console.log(response.data)
 			} catch (error) {
 				console.log(error.message)

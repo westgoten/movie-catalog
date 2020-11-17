@@ -58,6 +58,17 @@ export const getConfiguration = () => {
 	})
 }
 
+export const searchMovies = (query, page = 1) => {
+	return axios.get(
+		`/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+			query
+		)}&page=${page}`,
+		{
+			transformResponse: getDataHandlers(dataHandlers.prepareSearch)
+		}
+	)
+}
+
 function getDataHandlers(...dataHandlers) {
 	return axios.defaults.transformResponse.concat(dataHandlers)
 }

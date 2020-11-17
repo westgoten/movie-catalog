@@ -52,6 +52,11 @@ const dataHandlers = {
 		if (data.success === undefined || data.success)
 			return new APIConfiguration(data)
 		return data
+	},
+	prepareSearch: (data) => {
+		if (data.success === undefined || data.success)
+			return new MovieList(data)
+		return data
 	}
 }
 
