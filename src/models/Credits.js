@@ -10,37 +10,34 @@ class Credits {
 		)
 	}
 
-	getMostPopularPersonByJob(...jobs) {
-		// TO DO
-		return this.filterCrewByJob(...jobs).reduce(
-			(accumulator, crewMember) => {
-				for (let i = 0; i < accumulator.length; i++) {
-					const popularMember = accumulator[i]
-					if (popularMember.name === crewMember.name) {
-						return accumulator
-					} else if (
-						popularMember.job === crewMember.job &&
-						popularMember.popularity < crewMember.popularity
-					) {
-						accumulator[i] = crewMember
-						return accumulator
-					} else if (
-						popularMember.job === crewMember.job &&
-						popularMember.popularity >= crewMember.popularity
-					) {
-						return accumulator
-					}
-				}
-				return accumulator.concat(crewMember)
-			},
-			[]
+	getDirectorAndScreenplay() {
+		const director = this.getMostPopularCrewMemberByJob('director')
+		const screenplay = this.getMostPopularCrewMemberByJob(
+			'screenplay',
+			director ? director.name : null
 		)
+		return [director, screenplay]
+	}
+
+	getMostPopularCrewMemberByJob(job, excludedName = null) {
+		const filteredCrew = this.filterCrewByJob(job)
+		if (filteredCrew.length > 0) {
+			return filteredCrew.reduce((accumulator, crewMember) => {
+				if (
+					crewMember.name !== excludedName &&
+					crewMember.popularity > accumulator.popularity
+				)
+					accumulator = crewMember
+				return accumulator
+			})
+		}
+		return undefined
 	}
 
 	filterCrewByJob(...jobs) {
 		return this.crew.filter((crewMember) =>
 			jobs.some(
-				(job) => job.toUpperCase() === crewMember.job.toUpperCase()
+				(job) => job.toLowerCase() === crewMember.job.toLowerCase()
 			)
 		)
 	}
