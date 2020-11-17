@@ -36,9 +36,11 @@ const dataHandlers = {
 		return data
 	},
 	prepareVideos: (data) => {
-		// TO DO
-		if (data.success === undefined || data.success)
-			return new VideoList(data)
+		if (data.success === undefined || data.success) {
+			const videoList = new VideoList(data)
+			videoList.generateVideosPaths()
+			return videoList
+		}
 		return data
 	},
 	prepareGenres: (data) => {

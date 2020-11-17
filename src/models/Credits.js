@@ -1,5 +1,6 @@
 import Actor from './Actor'
 import CrewMember from './CrewMember'
+import crewJobs from '../utils/consts/crewJobs'
 
 class Credits {
 	constructor(data) {
@@ -11,9 +12,9 @@ class Credits {
 	}
 
 	getDirectorAndScreenplay() {
-		const director = this.getMostPopularCrewMemberByJob('director')
+		const director = this.getMostPopularCrewMemberByJob(crewJobs.DIRECTOR)
 		const screenplay = this.getMostPopularCrewMemberByJob(
-			'screenplay',
+			crewJobs.SCREENPLAY,
 			director ? director.name : null
 		)
 		return [director, screenplay]
