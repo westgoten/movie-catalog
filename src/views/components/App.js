@@ -1,7 +1,9 @@
 import { useEffect } from 'react'
-import '../style/App.css'
+import { Switch, Route, Link } from 'react-router-dom'
+import Footer from './Footer'
 import * as api from '../../api/apiMovieDB'
 import movieFilters from '../../utils/consts/movieFilters'
+import '../style/App.css'
 
 function App() {
 	// Only for testing purposes
@@ -17,7 +19,20 @@ function App() {
 		fetchData()
 	}, [])
 
-	return <div>Hi</div>
+	return (
+		<div className='app'>
+			<Switch>
+				<Route path='/test'>
+					<Link to='/'>Bye</Link>
+				</Route>
+				<Route path='/'>
+					<Link to='/test'>Hi</Link>
+				</Route>
+			</Switch>
+
+			<Footer />
+		</div>
+	)
 }
 
 export default App

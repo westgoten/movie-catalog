@@ -11,7 +11,7 @@
 # production
 /build
 
-# sass
+# sass / css
 *.css.map
 
 # config
