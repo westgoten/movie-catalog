@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import App from './views/components/App'
 import reportWebVitals from './utils/reportWebVitals'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 import './views/style/index.css'
 
 ReactDOM.render(

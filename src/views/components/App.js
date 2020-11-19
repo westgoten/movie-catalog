@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import Footer from './Footer'
+import Header from './Header'
 import * as api from '../../api/apiMovieDB'
-import movieFilters from '../../utils/consts/movieFilters'
 import '../style/App.css'
 
 function App() {
@@ -21,6 +21,8 @@ function App() {
 
 	return (
 		<div className='app'>
+			<Header />
+
 			<Switch>
 				<Route path='/test'>
 					<Link to='/'>Bye</Link>
