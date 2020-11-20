@@ -1,5 +1,5 @@
 import SearchBar from './SearchBar'
-import '../style/Header.css'
+import '../style/css/Header.css'
 
 function Header() {
 	return (

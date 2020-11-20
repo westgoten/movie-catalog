@@ -3,7 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom'
 import Footer from './Footer'
 import Header from './Header'
 import * as api from '../../api/apiMovieDB'
-import '../style/App.css'
+import '../style/css/App.css'
 
 function App() {
 	// Only for testing purposes

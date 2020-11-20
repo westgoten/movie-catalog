@@ -13,7 +13,7 @@ $padding: 12px;
 	border-radius: $border-radius;
 	border: 1px solid gray;
 	background-color: orange;
-	transition: width 0.2s;
+	transition: all 0.2s ease-out;
 	cursor: text;
 }
 

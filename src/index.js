@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './views/components/App'
 import reportWebVitals from './utils/reportWebVitals'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import './views/style/index.css'
+import './views/style/css/index.css'
 
 ReactDOM.render(
 	<React.StrictMode>
