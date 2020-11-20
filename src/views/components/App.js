@@ -23,14 +23,16 @@ function App() {
 		<div className='app'>
 			<Header />
 
-			<Switch>
-				<Route path='/test'>
-					<Link to='/'>Bye</Link>
-				</Route>
-				<Route path='/'>
-					<Link to='/test'>Hi</Link>
-				</Route>
-			</Switch>
+			<main className='main'>
+				<Switch>
+					<Route path='/test'>
+						<Link to='/'>Bye</Link>
+					</Route>
+					<Route path='/'>
+						<Link to='/test'>Hi</Link>
+					</Route>
+				</Switch>
+			</main>
 
 			<Footer />
 		</div>

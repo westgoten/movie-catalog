@@ -1,8 +1,20 @@
+@use 'Header';
+@use 'Footer';
+
 .app {
 	position: absolute;
-	min-width: 100%;
-	min-height: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	overflow: auto;
 	background-color: black;
 	color: white;
-	overflow: scroll;
+}
+
+.main {
+	width: 100%;
+	height: calc(100% - #{Header.$header-height + Footer.$footer-height});
+	box-sizing: border-box;
+	background-color: red;
 }

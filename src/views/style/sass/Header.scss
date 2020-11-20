@@ -1,6 +1,13 @@
+$header-height: 91px;
+
 .header {
+	height: $header-height;
+	width: 100%;
+	box-sizing: border-box;
 	display: flex;
+	align-items: center;
 	padding: 1.5em 7.5em;
+	background-color: blue;
 }
 
 .logo {
@@ -11,7 +18,7 @@
 
 .logo-icon {
 	font-size: 2.5em;
-	margin-inline-end: 0.2em;
+	margin-right: 0.2em;
 }
 
 .logo-text {

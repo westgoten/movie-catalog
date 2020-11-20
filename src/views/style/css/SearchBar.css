@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-inline-start: 1.5em;
+  margin-left: 1.5em;
   border-radius: 6px;
   border: 1px solid gray;
   background-color: orange;
@@ -27,14 +27,18 @@
   border-bottom-left-radius: 6px;
   padding-left: 12px;
   background-color: transparent;
+  outline: none;
+}
+.search-input::-ms-clear {
+  display: none;
 }
 
 .search-icon-wrapper {
   height: 100%;
   display: flex;
   align-items: center;
-  padding-inline-start: 12px;
-  padding-inline-end: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
   cursor: default;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;

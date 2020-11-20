@@ -1,13 +1,14 @@
 $link-color: coral;
+$footer-height: 68px;
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
+	width: 100%;
+	box-sizing: border-box;
 	text-align: center;
 	font-size: 0.85em;
 	padding: 12px;
+	height: $footer-height;
+	background-color: blue;
 }
 
 .link {
