@@ -1,3 +1,4 @@
+import SearchBar from './SearchBar'
 import '../style/Header.css'
 
 function Header() {
@@ -7,7 +8,7 @@ function Header() {
 				<i className='fas fa-film logo-icon'></i>
 				<span className='logo-text'>Movie Catalog</span>
 			</div>
-			<div></div>
+			<SearchBar />
 			<div></div>
 		</header>
 	)
