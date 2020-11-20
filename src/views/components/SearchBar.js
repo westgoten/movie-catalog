@@ -6,42 +6,25 @@ function SearchBar() {
 	const [inputText, setInputText] = useState('')
 	const inputRef = useRef(null)
 
-	useEffect(() => {
-		const input = inputRef.current
+	useEffect(addAppEventListener)
+
+	function addAppEventListener() {
 		const app = document.querySelector('.app')
 		const searchBar = document.querySelector('.search-bar')
 		const searchBarChildren = searchBar.querySelectorAll('*')
 
-		input.addEventListener('focus', handleInputFocus)
-		app.addEventListener('click', handleAppClick)
+		app.addEventListener('click', handleClickOutsideSearchBar)
 
-		function handleInputFocus() {
-			setSearchOpen(true)
-		}
-		function handleAppClick(event) {
+		function handleClickOutsideSearchBar(event) {
 			if (searchBar === event.target) return
 			for (const childElement of searchBarChildren)
 				if (childElement === event.target) return
+
 			setSearchOpen(false)
 		}
 
-		return () => {
-			input.removeEventListener('focus', handleInputFocus)
-			app.removeEventListener('click', handleAppClick)
-		}
-	})
-
-	function handleInput(event) {
-		setInputText(event.target.value)
-	}
-
-	function closeSearchBar() {
-		setInputText('')
-		setSearchOpen(false)
-	}
-
-	function openSearchBar() {
-		inputRef.current.focus()
+		return () =>
+			app.removeEventListener('click', handleClickOutsideSearchBar)
 	}
 
 	return (
@@ -54,6 +37,7 @@ function SearchBar() {
 				placeholder='Search movies by title'
 				value={inputText}
 				onChange={handleInput}
+				onFocus={handleInputFocus}
 			/>
 			{isSearchOpen ? (
 				<span className='search-icon-wrapper' onClick={closeSearchBar}>
@@ -66,6 +50,23 @@ function SearchBar() {
 			)}
 		</div>
 	)
+
+	function handleInput(event) {
+		setInputText(event.target.value)
+	}
+
+	function handleInputFocus() {
+		setSearchOpen(true)
+	}
+
+	function closeSearchBar() {
+		setInputText('')
+		setSearchOpen(false)
+	}
+
+	function openSearchBar() {
+		inputRef.current.focus()
+	}
 }
 
 export default SearchBar
