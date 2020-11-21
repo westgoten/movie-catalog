@@ -1,4 +1,5 @@
 import SearchBar from './SearchBar'
+import Menu from './Menu'
 import '../style/css/Header.css'
 
 function Header() {
@@ -9,7 +10,7 @@ function Header() {
 				<span className='logo-text'>Movie Catalog</span>
 			</div>
 			<SearchBar />
-			<div></div>
+			<Menu />
 		</header>
 	)
 }

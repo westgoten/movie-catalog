@@ -1,5 +1,5 @@
 $link-color: coral;
-$footer-height: 68px;
+$footer-height: 98px;
 
 .footer {
 	width: 100%;
@@ -20,9 +20,5 @@ $footer-height: 68px;
 
 	&:visited {
 		color: $link-color;
-	}
-
-	&:hover {
-		color: yellow;
 	}
 }

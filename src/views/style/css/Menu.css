@@ -1,0 +1,13 @@
+.menu {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.menu-auth {
+  margin-right: 20px;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  font-weight: 600;
+}

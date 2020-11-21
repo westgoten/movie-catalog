@@ -25,6 +25,9 @@ function App() {
 
 			<main className='main'>
 				<Switch>
+					<Route path='/auth'>
+						<Link to='/'>Auth page placeholder</Link>
+					</Route>
 					<Route path='/test'>
 						<Link to='/'>Bye</Link>
 					</Route>

@@ -31,7 +31,7 @@
   text-align: center;
   font-size: 0.85em;
   padding: 12px;
-  height: 68px;
+  height: 98px;
   background-color: blue;
 }
 
@@ -43,9 +43,6 @@
 }
 .link:visited {
   color: coral;
-}
-.link:hover {
-  color: yellow;
 }
 
 .app {
@@ -61,7 +58,8 @@
 
 .main {
   width: 100%;
-  height: calc(100% - 159px);
+  min-height: 150px;
+  height: calc(100% - 189px);
   box-sizing: border-box;
   background-color: red;
 }

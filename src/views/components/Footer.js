@@ -12,7 +12,9 @@ function Footer() {
 					rel='noopener noreferrer'>
 					westgoten
 				</a>
-				. See source code{' '}
+			</p>
+			<p>
+				See source code{' '}
 				<a
 					className='link'
 					href='https://github.com/westgoten/movie-catalog'
