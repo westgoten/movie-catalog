@@ -1,4 +1,6 @@
-$header-height: 91px;
+@use 'consts';
+
+$header-height: 5.68rem;
 
 .header {
 	height: $header-height;
@@ -6,7 +8,7 @@ $header-height: 91px;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	padding: 1.5em 7.5em;
+	padding: consts.$page-padding;
 	background-color: blue;
 }
 

@@ -3,7 +3,7 @@ import '../style/css/Footer.css'
 function Footer() {
 	return (
 		<footer className='footer'>
-			<p>
+			<span className='footer-text'>
 				© 2020, made with ❤️ by{' '}
 				<a
 					className='link'
@@ -12,8 +12,8 @@ function Footer() {
 					rel='noopener noreferrer'>
 					westgoten
 				</a>
-			</p>
-			<p>
+			</span>
+			<span className='footer-text'>
 				See source code{' '}
 				<a
 					className='link'
@@ -22,7 +22,7 @@ function Footer() {
 					rel='noopener noreferrer'>
 					here
 				</a>
-			</p>
+			</span>
 		</footer>
 	)
 }

@@ -1,5 +1,6 @@
 @use 'Header';
 @use 'Footer';
+@use 'consts';
 
 .app {
 	position: absolute;
@@ -13,9 +14,9 @@
 }
 
 .main {
+	padding: consts.$page-padding;
 	width: 100%;
-	min-height: 150px;
-	height: calc(100% - #{Header.$header-height + Footer.$footer-height});
+	min-height: calc(100% - #{Header.$header-height + Footer.$footer-height});
 	box-sizing: border-box;
 	background-color: red;
 }

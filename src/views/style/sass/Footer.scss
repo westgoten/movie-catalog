@@ -1,14 +1,21 @@
 $link-color: coral;
-$footer-height: 98px;
+$footer-height: 6.3rem;
 
 .footer {
 	width: 100%;
 	box-sizing: border-box;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	font-size: 0.85em;
-	padding: 12px;
-	height: $footer-height;
+	padding: 0.75rem;
+	min-height: $footer-height;
 	background-color: blue;
+}
+
+.footer-text {
+	margin: 0.3em;
 }
 
 .link {

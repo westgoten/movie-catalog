@@ -2,14 +2,14 @@ $border-radius: 6px;
 $padding: 12px;
 
 .search-bar {
-	min-width: 12em;
-	width: 12em;
-	min-height: 2.55em;
-	height: 2.55em;
+	min-width: 12rem;
+	width: 12rem;
+	min-height: 2.55rem;
+	height: 2.55rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-left: 1.5em;
+	margin-left: 1.5rem;
 	border-radius: $border-radius;
 	border: 1px solid gray;
 	background-color: orange;
@@ -19,7 +19,7 @@ $padding: 12px;
 
 .opened-search-bar {
 	background-color: white;
-	width: 25em;
+	width: 25rem;
 }
 
 .search-input {

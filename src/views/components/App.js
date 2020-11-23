@@ -28,11 +28,19 @@ function App() {
 					<Route path='/auth'>
 						<Link to='/'>Auth page placeholder</Link>
 					</Route>
-					<Route path='/test'>
-						<Link to='/'>Bye</Link>
-					</Route>
 					<Route path='/'>
-						<Link to='/test'>Hi</Link>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
 					</Route>
 				</Switch>
 			</main>
