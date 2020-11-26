@@ -1,15 +1,19 @@
-@use 'consts';
+@use 'consts' as *;
 
-$header-height: 5.68rem;
+$height: 5.68rem;
 
 .header {
-	height: $header-height;
+	height: $height;
 	width: 100%;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
-	padding: consts.$page-padding;
+	padding: $page-padding-y $page-padding-x;
 	background-color: blue;
+
+	@media (max-width: $small-width) {
+		padding: ($page-padding-y / 2) ($page-padding-x / 2);
+	}
 }
 
 .logo {

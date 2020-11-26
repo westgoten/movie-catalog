@@ -1,6 +1,6 @@
 @use 'Header';
 @use 'Footer';
-@use 'consts';
+@use 'consts' as *;
 
 .app {
 	position: absolute;
@@ -14,9 +14,13 @@
 }
 
 .main {
-	padding: consts.$page-padding;
+	padding: $page-padding-y $page-padding-x;
 	width: 100%;
-	min-height: calc(100% - #{Header.$header-height + Footer.$footer-height});
+	min-height: calc(100% - #{Header.$height + Footer.$height});
 	box-sizing: border-box;
 	background-color: red;
+
+	@media (max-width: $small-width) {
+		padding: ($page-padding-y / 2) ($page-padding-x / 2);
+	}
 }

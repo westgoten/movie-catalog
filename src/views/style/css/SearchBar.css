@@ -1,13 +1,14 @@
 .search-bar {
-  min-width: 12rem;
-  width: 12rem;
-  min-height: 2.55rem;
-  height: 2.55rem;
+  min-width: 12em;
+  width: 16em;
+  min-height: 2.55em;
+  height: 2.55em;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 1.5rem;
+  margin-left: 1.5em;
   border-radius: 6px;
+  box-sizing: border-box;
   border: 1px solid gray;
   background-color: orange;
   transition: all 0.2s ease-out;
@@ -16,7 +17,7 @@
 
 .opened-search-bar {
   background-color: white;
-  width: 25rem;
+  width: 25em;
 }
 
 .search-input {
@@ -25,8 +26,9 @@
   border: none;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
-  padding-left: 12px;
+  padding-left: 0.75em;
   background-color: transparent;
+  font-size: 0.95em;
   outline: none;
 }
 .search-input::-ms-clear {
@@ -37,11 +39,12 @@
   height: 100%;
   display: flex;
   align-items: center;
-  padding-left: 12px;
-  padding-right: 12px;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
   cursor: default;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
+  box-sizing: border-box;
 }
 
 .search-icon-open {

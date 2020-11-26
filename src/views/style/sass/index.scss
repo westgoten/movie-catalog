@@ -1,3 +1,17 @@
+@use 'consts' as *;
+
+html {
+	font-size: 16px;
+
+	@media (max-width: $big-width) {
+		font-size: 14px;
+	}
+
+	@media (max-width: $medium-width) {
+		font-size: 12px;
+	}
+}
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
