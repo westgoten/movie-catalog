@@ -28,6 +28,9 @@ function App() {
 					<Route path='/auth'>
 						<Link to='/'>Auth page placeholder</Link>
 					</Route>
+					<Route path='/watchlist'>
+						<Link to='/'>Watchlist page placeholder</Link>
+					</Route>
 					<Route path='/'>
 						<h1>Test</h1>
 						<h1>Test</h1>

@@ -1,12 +1,12 @@
 html {
   font-size: 16px;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   html {
     font-size: 14px;
   }
 }
-@media (max-width: 896px) {
+@media (max-width: 970px) {
   html {
     font-size: 12px;
   }

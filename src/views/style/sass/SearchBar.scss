@@ -2,8 +2,8 @@ $border-radius: 6px;
 $padding: 0.75em;
 
 .search-bar {
-	min-width: 12em;
-	width: 16em;
+	min-width: 16em;
+	width: 23%;
 	min-height: 2.55em;
 	height: 2.55em;
 	display: flex;
@@ -20,7 +20,7 @@ $padding: 0.75em;
 
 .opened-search-bar {
 	background-color: white;
-	width: 25em;
+	width: 40.5%;
 }
 
 .search-input {
