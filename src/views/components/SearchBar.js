@@ -28,8 +28,7 @@ function SearchBar() {
 	}
 
 	return (
-		<div
-			className={`search-bar ${isSearchOpen ? 'opened-search-bar' : ''}`}>
+		<div className={`search-bar ${isSearchOpen ? 'search-bar-open' : ''}`}>
 			<input
 				ref={inputRef}
 				className='search-input'

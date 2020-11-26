@@ -1,3 +1,41 @@
 .side-navbar {
+	width: 0;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100%;
+	background-color: black;
+	transition: 0.5s;
+}
+
+.side-navbar-open {
+	width: 180px;
+}
+
+.side-navbar-item {
+	padding: 1em 2em;
+	text-decoration: none;
+	outline: none;
+	color: white;
+	font-weight: 600;
+
+	@media (hover: hover) {
+		&:hover {
+			background-color: gray;
+		}
+	}
+}
+
+.side-navbar-item-selected {
+	color: red;
+}
+
+.side-navbar-close-button {
+	margin: 0.8em;
 	margin-left: auto;
+	margin-right: 2em;
+	font-size: 1.5em;
+	cursor: pointer;
 }
