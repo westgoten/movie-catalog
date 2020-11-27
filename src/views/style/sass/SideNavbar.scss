@@ -1,17 +1,27 @@
+$navbar-width: 180px;
+
+.side-navbar-menu-icon {
+	font-size: 1.8em;
+	cursor: pointer;
+}
+
 .side-navbar {
-	width: 0;
+	width: $navbar-width;
 	display: flex;
 	flex-direction: column;
 	position: fixed;
 	top: 0;
-	right: 0;
+	right: -($navbar-width);
 	height: 100%;
 	background-color: black;
+	visibility: hidden;
 	transition: 0.5s;
+	z-index: 2;
 }
 
 .side-navbar-open {
-	width: 180px;
+	visibility: visible;
+	right: 0;
 }
 
 .side-navbar-item {
@@ -33,9 +43,9 @@
 }
 
 .side-navbar-close-button {
-	margin: 0.8em;
+	margin: 0.7em;
 	margin-left: auto;
 	margin-right: 2em;
-	font-size: 1.5em;
+	font-size: 1.6em;
 	cursor: pointer;
 }

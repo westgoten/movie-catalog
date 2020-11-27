@@ -41,10 +41,7 @@ function TopNavbar() {
 					</Link>
 				</>
 			) : (
-				<>
-					<i class='fas fa-bars top-navbar-menu-icon'></i>
-					<SideNavbar />
-				</>
+				<SideNavbar />
 			)}
 		</nav>
 	)
