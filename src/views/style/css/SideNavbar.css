@@ -3,21 +3,35 @@
   cursor: pointer;
 }
 
+.side-navbar-opacity-layer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
+  visibility: hidden;
+}
+.side-navbar-opacity-layer[visible] {
+  visibility: visible;
+}
+
 .side-navbar {
   width: 180px;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
+  bottom: 0;
   right: -180px;
-  height: 100%;
   background-color: black;
   visibility: hidden;
   transition: 0.5s;
   z-index: 2;
 }
-
-.side-navbar-open {
+.side-navbar[visible] {
   visibility: visible;
   right: 0;
 }
