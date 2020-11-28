@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import MobileSearchBar from './MobileSearchBar'
 import SearchBar from './SearchBar'
 import TopNavbar from './TopNavbar'
 import '../style/css/Header.css'

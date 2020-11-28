@@ -1,4 +1,7 @@
-$navbar-width: 180px;
+@use 'consts' as *;
+
+$navbar-width: 250px;
+$navbar-width-small: 180px;
 
 .side-navbar-menu-icon {
 	font-size: 1.8em;
@@ -33,6 +36,11 @@ $navbar-width: 180px;
 	visibility: hidden;
 	transition: 0.5s;
 	z-index: 2;
+
+	@media (max-width: $small-width) {
+		width: $navbar-width-small;
+		right: -($navbar-width-small);
+	}
 
 	&[visible] {
 		visibility: visible;

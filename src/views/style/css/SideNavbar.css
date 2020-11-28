@@ -19,17 +19,23 @@
 }
 
 .side-navbar {
-  width: 180px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
   bottom: 0;
-  right: -180px;
+  right: -250px;
   background-color: black;
   visibility: hidden;
   transition: 0.5s;
   z-index: 2;
+}
+@media (max-width: 736px) {
+  .side-navbar {
+    width: 180px;
+    right: -180px;
+  }
 }
 .side-navbar[visible] {
   visibility: visible;
