@@ -1,6 +1,5 @@
 .search-bar {
-  min-width: 15em;
-  width: 23%;
+  min-width: 25%;
   min-height: 2.55em;
   height: 2.55em;
   display: flex;
@@ -17,7 +16,7 @@
 
 .search-bar-open {
   background-color: white;
-  width: 45%;
+  min-width: 45%;
 }
 
 .search-input {

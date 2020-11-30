@@ -9,7 +9,7 @@ function SideNavbar() {
 	return (
 		<>
 			<i
-				class='fas fa-bars side-navbar-menu-icon'
+				className='fas fa-bars side-navbar-menu-icon'
 				onClick={openNavbar}></i>
 			<nav className='side-navbar' {...(isNavbarOpen ? visible : none)}>
 				<i
