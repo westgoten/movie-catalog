@@ -1,8 +1,10 @@
 @use 'consts' as *;
 
 $height: 5.68rem;
+$icon-size: 20px;
 
 .header {
+	position: fixed;
 	height: $height;
 	width: 100%;
 	box-sizing: border-box;
@@ -10,6 +12,7 @@ $height: 5.68rem;
 	align-items: center;
 	padding: $page-padding-y $page-padding-x;
 	background-color: blue;
+	box-shadow: 0.5px 0.5px 2px black;
 
 	@media (max-width: $small-width) {
 		padding: ($page-padding-y / 2) ($page-padding-x / 2);

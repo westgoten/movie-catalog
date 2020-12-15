@@ -1,4 +1,5 @@
 .header {
+  position: fixed;
   height: 5.68rem;
   width: 100%;
   box-sizing: border-box;
@@ -6,6 +7,7 @@
   align-items: center;
   padding: 1.5rem 7.5rem;
   background-color: blue;
+  box-shadow: 0.5px 0.5px 2px black;
 }
 @media (max-width: 736px) {
   .header {
@@ -70,6 +72,8 @@
 
 .main {
   padding: 1.5rem 7.5rem;
+  padding-top: 1rem;
+  margin-top: 5.68rem;
   width: 100%;
   min-height: calc(100% - 11.98rem);
   box-sizing: border-box;
@@ -78,5 +82,6 @@
 @media (max-width: 736px) {
   .main {
     padding: 0.75rem 3.75rem;
+    padding-top: 0.5rem;
   }
 }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { none, visible } from '../../utils/consts/componentAttributes'
+import { NONE, VISIBLE } from '../../utils/consts/componentAttributes'
 import '../style/css/SideNavbar.css'
 
 function SideNavbar() {
@@ -11,7 +11,7 @@ function SideNavbar() {
 			<i
 				className='fas fa-bars side-navbar-menu-icon'
 				onClick={openNavbar}></i>
-			<nav className='side-navbar' {...(isNavbarOpen ? visible : none)}>
+			<nav className='side-navbar' {...(isNavbarOpen ? VISIBLE : NONE)}>
 				<i
 					className='fas fa-times side-navbar-close-button'
 					onClick={closeNavbar}></i>
@@ -43,7 +43,7 @@ function SideNavbar() {
 			<div
 				className='side-navbar-opacity-layer'
 				onClick={closeNavbar}
-				{...(isNavbarOpen ? visible : none)}></div>
+				{...(isNavbarOpen ? VISIBLE : NONE)}></div>
 		</>
 	)
 

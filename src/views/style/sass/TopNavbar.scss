@@ -1,7 +1,13 @@
+@use 'consts' as *;
+
 .top-navbar {
 	display: flex;
 	align-items: center;
 	margin-left: auto;
+
+	@media (max-width: $small-width) {
+		margin-left: 0;
+	}
 }
 
 .top-navbar-item {

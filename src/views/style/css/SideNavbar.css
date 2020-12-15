@@ -1,5 +1,39 @@
+.header {
+  position: fixed;
+  height: 5.68rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 7.5rem;
+  background-color: blue;
+  box-shadow: 0.5px 0.5px 2px black;
+}
+@media (max-width: 736px) {
+  .header {
+    padding: 0.75rem 3.75rem;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: orange;
+}
+
+.logo-icon {
+  font-size: 2.5em;
+  margin-right: 0.2em;
+}
+
+.logo-text {
+  font-size: 1.4em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: -0.07em;
+}
+
 .side-navbar-menu-icon {
-  font-size: 1.8em;
+  font-size: 20px;
   cursor: pointer;
 }
 

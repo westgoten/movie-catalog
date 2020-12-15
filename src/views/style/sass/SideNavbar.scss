@@ -1,10 +1,11 @@
 @use 'consts' as *;
+@use 'Header';
 
 $navbar-width: 250px;
 $navbar-width-small: 180px;
 
 .side-navbar-menu-icon {
-	font-size: 1.8em;
+	font-size: Header.$icon-size;
 	cursor: pointer;
 }
 
