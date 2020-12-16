@@ -6,18 +6,30 @@ function MobileSearchBar() {
 	const [isSearchOpen, setSearchOpen] = useState(false)
 
 	return (
-		<div
-			className='mobile-search-bar'
-			onClick={openSearchBar}
-			{...(isSearchOpen ? OPENED : NONE)}>
-			<i
-				className='fas fa-search mobile-search-bar-icon'
-				{...(isSearchOpen ? OPENED : NONE)}></i>
+		<div className='mobile-search-bar' {...(isSearchOpen ? OPENED : NONE)}>
+			{isSearchOpen ? (
+				<div className='mobile-search-bar-content'>
+					<div className='mobile-search-bar-go-back'>
+						<i className='fas fa-arrow-left mobile-search-bar-go-back-icon'></i>
+					</div>
+					<input
+						className='mobile-search-bar-input'
+						type='text'
+						autoFocus
+					/>
+					<div className='mobile-search-bar-search'>
+						<i className='fas fa-search mobile-search-bar-search-icon'></i>
+					</div>
+				</div>
+			) : (
+				<i
+					className='fas fa-search mobile-search-bar-icon'
+					onClick={openSearchBar}></i>
+			)}
 		</div>
 	)
 
 	function openSearchBar() {
-		console.log('isSearchOpen: ' + isSearchOpen)
 		setSearchOpen(true)
 	}
 
