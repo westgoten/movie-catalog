@@ -1,5 +1,7 @@
 .header {
   position: fixed;
+  top: 0;
+  left: 0;
   height: 5.68rem;
   width: 100%;
   box-sizing: border-box;
@@ -8,6 +10,12 @@
   padding: 1.5rem 7.5rem;
   background-color: blue;
   box-shadow: 0.5px 0.5px 2px black;
+  visibility: visible;
+  transition: 0.4s;
+}
+.header[invisible] {
+  visibility: hidden;
+  top: -5.68rem;
 }
 @media (max-width: 736px) {
   .header {

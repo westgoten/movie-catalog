@@ -5,6 +5,8 @@ $icon-size: 20px;
 
 .header {
 	position: fixed;
+	top: 0;
+	left: 0;
 	height: $height;
 	width: 100%;
 	box-sizing: border-box;
@@ -13,6 +15,13 @@ $icon-size: 20px;
 	padding: $page-padding-y $page-padding-x;
 	background-color: blue;
 	box-shadow: 0.5px 0.5px 2px black;
+	visibility: visible;
+	transition: 0.4s;
+
+	&[invisible] {
+		visibility: hidden;
+		top: -($height);
+	}
 
 	@media (max-width: $small-width) {
 		padding: ($page-padding-y / 2) ($page-padding-x / 2);
