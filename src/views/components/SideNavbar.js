@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NONE, VISIBLE } from '../../utils/consts/componentAttributes'
+import OpacityLayer from './OpacityLayer'
 import '../style/css/SideNavbar.css'
 
 function SideNavbar() {
@@ -40,10 +41,7 @@ function SideNavbar() {
 					SIGN IN
 				</NavLink>
 			</nav>
-			<div
-				className='side-navbar-opacity-layer'
-				onClick={closeNavbar}
-				{...(isNavbarOpen ? VISIBLE : NONE)}></div>
+			{isNavbarOpen ? <OpacityLayer onClick={closeNavbar} /> : null}
 		</>
 	)
 

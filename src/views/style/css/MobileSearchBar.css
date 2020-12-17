@@ -45,6 +45,7 @@
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 2;
 }
 
 .mobile-search-bar-content {
@@ -99,4 +100,7 @@
 }
 .mobile-search-bar-input:focus {
   border-color: lightskyblue;
+}
+.mobile-search-bar-input::-ms-clear {
+  display: none;
 }
