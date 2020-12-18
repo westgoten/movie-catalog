@@ -16,3 +16,8 @@
   color: white;
   font-weight: 600;
 }
+@media (hover: hover) {
+  .top-navbar-item:hover {
+    color: orange;
+  }
+}

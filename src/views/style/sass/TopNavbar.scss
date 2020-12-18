@@ -16,4 +16,10 @@
 	outline: none;
 	color: white;
 	font-weight: 600;
+
+	@media (hover: hover) {
+		&:hover {
+			color: $theme-secondary-color;
+		}
+	}
 }

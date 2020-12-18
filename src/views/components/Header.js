@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import useScreenSize from '../../utils/hooks/useScreenSize'
 import MobileSearchBar from './MobileSearchBar'
 import SearchBar from './SearchBar'
@@ -33,10 +34,10 @@ function Header() {
 
 	return (
 		<header className='header' {...(isHeaderVisible ? NONE : INVISIBLE)}>
-			<div className='logo'>
+			<Link to='/' className='logo'>
 				<i className='fas fa-film logo-icon'></i>
 				<span className='logo-text'>Movie Catalog</span>
-			</div>
+			</Link>
 			{isScreenSizeSmall ? <MobileSearchBar /> : <SearchBar />}
 			<TopNavbar />
 		</header>

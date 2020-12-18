@@ -17,7 +17,7 @@ $navbar-width-small: 180px;
 	top: 0;
 	bottom: 0;
 	right: -($navbar-width);
-	background-color: black;
+	background-color: darken($color: Header.$background-color, $amount: 5);
 	visibility: hidden;
 	transition: 0.5s;
 	z-index: 2;
@@ -42,13 +42,16 @@ $navbar-width-small: 180px;
 
 	@media (hover: hover) {
 		&:hover {
-			background-color: gray;
+			background-color: lighten(
+				$color: Header.$background-color,
+				$amount: 2
+			);
 		}
 	}
 }
 
 .side-navbar-item-selected {
-	color: red;
+	color: $theme-secondary-color;
 }
 
 .side-navbar-close-button {

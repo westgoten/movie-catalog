@@ -22,7 +22,7 @@ function App() {
 	return (
 		<div className='app'>
 			<Header />
-
+			<div className='header-placeholder'></div>
 			<main className='main'>
 				<Switch>
 					<Route path='/auth'>
@@ -47,7 +47,6 @@ function App() {
 					</Route>
 				</Switch>
 			</main>
-
 			<Footer />
 		</div>
 	)

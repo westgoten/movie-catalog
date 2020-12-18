@@ -1,5 +1,6 @@
-$link-color: coral;
-$height: 6.3rem;
+@use 'consts' as *;
+
+$link-color: $theme-secondary-color;
 
 .footer {
 	width: 100%;
@@ -9,9 +10,8 @@ $height: 6.3rem;
 	align-items: center;
 	justify-content: center;
 	font-size: 0.85em;
-	padding: 0.75rem;
-	min-height: $height;
-	background-color: blue;
+	padding: $page-padding-y $page-padding-x;
+	background-color: $edge-background-color;
 }
 
 .footer-text {
@@ -27,5 +27,11 @@ $height: 6.3rem;
 
 	&:visited {
 		color: $link-color;
+	}
+
+	@media (hover: hover) {
+		&:hover {
+			color: yellow;
+		}
 	}
 }

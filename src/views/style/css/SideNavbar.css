@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   padding: 1.5rem 7.5rem;
-  background-color: blue;
+  background-color: #660500;
   box-shadow: 0.5px 0.5px 2px black;
   visibility: visible;
   transition: 0.4s;
@@ -27,6 +27,8 @@
   display: flex;
   align-items: center;
   color: orange;
+  text-decoration: none;
+  outline: none;
 }
 
 .logo-icon {
@@ -53,7 +55,7 @@
   top: 0;
   bottom: 0;
   right: -250px;
-  background-color: black;
+  background-color: #4d0400;
   visibility: hidden;
   transition: 0.5s;
   z-index: 2;
@@ -78,12 +80,12 @@
 }
 @media (hover: hover) {
   .side-navbar-item:hover {
-    background-color: gray;
+    background-color: #700600;
   }
 }
 
 .side-navbar-item-selected {
-  color: red;
+  color: orange;
 }
 
 .side-navbar-close-button {
