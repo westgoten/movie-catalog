@@ -2,6 +2,9 @@ import { useEffect } from 'react'
 import { Switch, Route, Link } from 'react-router-dom'
 import Footer from './Footer'
 import Header from './Header'
+import MoviesRedirect from './MoviesRedirect'
+import MoviesPage from '../pages/MoviesPage'
+import PageNotFound from './PageNotFound'
 import * as api from '../../api/apiMovieDB'
 import '../style/css/App.css'
 
@@ -25,25 +28,34 @@ function App() {
 			<div className='header-placeholder'></div>
 			<main className='main'>
 				<Switch>
-					<Route path='/auth'>
+					<Route exact path='/'>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+						<h1>Test</h1>
+					</Route>
+					<Route exact path='/auth'>
 						<Link to='/'>Auth page placeholder</Link>
 					</Route>
-					<Route path='/watchlist'>
+					<Route exact path='/watchlist'>
 						<Link to='/'>Watchlist page placeholder</Link>
 					</Route>
-					<Route path='/'>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
+					<Route exact path='/:movieFilter'>
+						<MoviesRedirect />
+					</Route>
+					<Route exact path='/:movieFilter/:page'>
+						<MoviesPage />
+					</Route>
+					<Route>
+						<PageNotFound />
 					</Route>
 				</Switch>
 			</main>
