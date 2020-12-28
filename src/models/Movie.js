@@ -6,7 +6,7 @@ class Movie {
 		this.title = data.title
 		this.voteAverage = data.vote_average
 		this.fullPosterPath = null
-		this.genres = null
+		this.genres = []
 	}
 }
 

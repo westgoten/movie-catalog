@@ -10,12 +10,12 @@
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
-	background-color: black;
+	background-color: $page-background-color;
 	color: $theme-primary-text-color;
 }
 
 .header-placeholder {
-	background-color: Header.$background-color;
+	background-color: $page-background-color;
 	min-height: Header.$height;
 	width: 100%;
 }

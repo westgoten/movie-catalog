@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useLayoutEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useScreenSize from '../../utils/hooks/useScreenSize'
 import MobileSearchBar from './MobileSearchBar'
@@ -13,18 +13,25 @@ function Header() {
 	const [isHeaderVisible, setHeaderVisible] = useState(true)
 	const isScreenSizeSmall = useScreenSize(SMALL_WIDTH)
 	const app = useRef(null)
+	const header = useRef(null)
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		app.current = document.querySelector('.app')
+		header.current = app.current.querySelector('.header')
 	}, [])
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const appNode = app.current
+		const headerNode = header.current
 		appNode.addEventListener('scroll', handleHeaderVisibility)
 
 		function handleHeaderVisibility() {
 			if (scrollYOffset > appNode.scrollTop) setHeaderVisible(true)
-			else if (scrollYOffset < appNode.scrollTop) setHeaderVisible(false)
+			else if (
+				appNode.scrollTop >= headerNode.offsetHeight &&
+				scrollYOffset < appNode.scrollTop
+			)
+				setHeaderVisible(false)
 			setScrollYOffset(appNode.scrollTop)
 		}
 
