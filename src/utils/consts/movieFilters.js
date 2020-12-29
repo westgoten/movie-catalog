@@ -1,8 +1,8 @@
 const movieFilters = {
-	now_playing: 'now_playing',
-	popular: 'popular',
-	top_rated: 'top_rated',
-	upcoming: 'upcoming'
+	popular: 'Popular',
+	now_playing: 'Now playing',
+	top_rated: 'Top rated',
+	upcoming: 'Upcoming'
 }
 
 export default Object.freeze(movieFilters)

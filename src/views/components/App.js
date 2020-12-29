@@ -29,18 +29,7 @@ function App() {
 			<main className='main'>
 				<Switch>
 					<Route exact path='/'>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
-						<h1>Test</h1>
+						<MoviesPage />
 					</Route>
 					<Route exact path='/auth'>
 						<Link to='/'>Auth page placeholder</Link>
