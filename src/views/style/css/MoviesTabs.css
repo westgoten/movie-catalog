@@ -1,18 +1,23 @@
 .tab-container {
   display: inline-flex;
   align-items: center;
-  margin-bottom: 70px;
+  margin-bottom: 4.375rem;
 }
 
 .tab {
-  position: relative;
   border: 1px solid #404040;
   border-right: none;
+  font-weight: 500;
   color: white;
   background-color: transparent;
   padding: 8px 12px;
   transition: 0.1s;
   cursor: pointer;
+}
+@media (max-width: 736px) {
+  .tab {
+    font-size: 0.9em;
+  }
 }
 .tab:first-child {
   border-top-left-radius: 4px;

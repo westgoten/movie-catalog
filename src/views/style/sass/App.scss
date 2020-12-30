@@ -27,6 +27,6 @@
 	box-sizing: border-box;
 
 	@media (max-width: $small-width) {
-		padding: (($page-padding-y / 2) + 1) ($page-padding-x / 2);
+		padding: (($page-padding-y / 2) + 1) ($page-padding-x / 3);
 	}
 }
