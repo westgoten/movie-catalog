@@ -16,6 +16,7 @@
 
 # config
 config.js
+config.json
 
 # misc
 .DS_Store
