@@ -1,3 +1,35 @@
+$card-border-radius: 4px;
+
 .movies-card {
-	background-color: red;
+	display: flex;
+	flex-direction: column;
+	background-color: darkgreen;
+	min-height: 400px;
+	max-width: 300px;
+	width: 100%;
+	justify-self: center;
+	border-radius: $card-border-radius;
+}
+
+.movies-card-image {
+	min-height: 325px;
+	background-color: lightslategray;
+	border-top-right-radius: $card-border-radius;
+	border-top-left-radius: $card-border-radius;
+}
+
+.movies-card-overview {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 16px;
+	font-family: Arial, sans-serif;
+}
+
+.movies-card-name {
+	margin-bottom: 8px;
+}
+
+.movies-card-genres {
+	font-size: 12px;
 }
