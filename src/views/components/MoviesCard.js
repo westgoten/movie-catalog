@@ -7,9 +7,9 @@ function MoviesCard() {
 			<div className='movies-card-overview'>
 				<span className='movies-card-name'>Jiu Jitsu</span>
 				<span className='movies-card-genres'>Action, Thriller</span>
-				<div>
-					<span></span>
-				</div>
+			</div>
+			<div className='movies-card-rating-border'>
+				<span className='movies-card-rating'>7.7</span>
 			</div>
 		</div>
 	)

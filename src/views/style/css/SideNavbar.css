@@ -12,6 +12,7 @@
   box-shadow: 0.5px 0.5px 2px black;
   visibility: visible;
   transition: 0.4s;
+  z-index: 3;
 }
 .header[invisible] {
   visibility: hidden;
@@ -58,7 +59,7 @@
   background-color: #4d0400;
   visibility: hidden;
   transition: 0.5s;
-  z-index: 2;
+  z-index: 4;
 }
 @media (max-width: 736px) {
   .side-navbar {

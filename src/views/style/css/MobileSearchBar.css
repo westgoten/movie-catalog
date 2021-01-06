@@ -12,6 +12,7 @@
   box-shadow: 0.5px 0.5px 2px black;
   visibility: visible;
   transition: 0.4s;
+  z-index: 3;
 }
 .header[invisible] {
   visibility: hidden;

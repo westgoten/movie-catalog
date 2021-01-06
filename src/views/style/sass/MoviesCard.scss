@@ -1,18 +1,26 @@
+@use 'consts' as *;
+
 $card-border-radius: 4px;
+$card-overview-padding-vertical: 24px;
+$card-overview-padding-horizontal: 16px;
+$image-height: 325px;
+$rating-border-size: 30px;
 
 .movies-card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	background-color: darkgreen;
+	background-color: $theme-primary-color;
 	min-height: 400px;
 	max-width: 300px;
 	width: 100%;
 	justify-self: center;
 	border-radius: $card-border-radius;
+	z-index: 1;
 }
 
 .movies-card-image {
-	min-height: 325px;
+	min-height: $image-height;
 	background-color: lightslategray;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
@@ -22,14 +30,35 @@ $card-border-radius: 4px;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	padding: 16px;
+	padding: $card-overview-padding-vertical $card-overview-padding-horizontal;
 	font-family: Arial, sans-serif;
 }
 
 .movies-card-name {
+	font-size: 16px;
 	margin-bottom: 8px;
+	word-wrap: break-word;
 }
 
 .movies-card-genres {
 	font-size: 12px;
+	word-wrap: break-word;
+}
+
+.movies-card-rating-border {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: $image-height - ($rating-border-size / 2) - 2px;
+	right: $card-overview-padding-horizontal / 2;
+	width: $rating-border-size;
+	height: $rating-border-size;
+	border-radius: 100%;
+	border: 2px solid $theme-secondary-color;
+	background-color: darken($color: $theme-secondary-color, $amount: 35);
+}
+
+.movies-card-rating {
+	font-size: 14px;
 }

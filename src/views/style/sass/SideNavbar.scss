@@ -20,7 +20,7 @@ $navbar-width-small: 180px;
 	background-color: darken($color: Header.$background-color, $amount: 5);
 	visibility: hidden;
 	transition: 0.5s;
-	z-index: 2;
+	z-index: 4;
 
 	@media (max-width: $small-width) {
 		width: $navbar-width-small;

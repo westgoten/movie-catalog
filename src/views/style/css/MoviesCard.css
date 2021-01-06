@@ -1,12 +1,14 @@
 .movies-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  background-color: darkgreen;
+  background-color: #660500;
   min-height: 400px;
   max-width: 300px;
   width: 100%;
   justify-self: center;
   border-radius: 4px;
+  z-index: 1;
 }
 
 .movies-card-image {
@@ -20,14 +22,35 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 16px;
+  padding: 24px 16px;
   font-family: Arial, sans-serif;
 }
 
 .movies-card-name {
+  font-size: 16px;
   margin-bottom: 8px;
+  word-wrap: break-word;
 }
 
 .movies-card-genres {
   font-size: 12px;
+  word-wrap: break-word;
+}
+
+.movies-card-rating-border {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 308px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  border: 2px solid orange;
+  background-color: #4d3200;
+}
+
+.movies-card-rating {
+  font-size: 14px;
 }
