@@ -5,24 +5,24 @@ import '../style/css/MoviesTabs.css'
 function MoviesTabs() {
 	const history = useHistory()
 	const match = useRouteMatch()
+	const movieFilter = match.params.movieFilter
 
 	return (
 		<div className='tab-container'>
-			{Object.keys(movieFilters).map((key, index) => (
+			{Array.from(movieFilters.keys()).map((key, index) => (
 				<button
 					key={key}
 					className={`tab${
 						isTabSelected(key, index) ? ' tab-selected' : ''
 					}`}
 					onClick={() => history.push(`/${key}`)}>
-					{movieFilters[key]}
+					{movieFilters.get(key)}
 				</button>
 			))}
 		</div>
 	)
 
 	function isTabSelected(key, index) {
-		const movieFilter = match.params.movieFilter
 		if (movieFilter) return key === movieFilter
 		if (match.path === '/' && index === 0) return true
 		return false

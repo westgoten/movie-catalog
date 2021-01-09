@@ -6,7 +6,7 @@ function MoviesRedirect() {
 	const match = useRouteMatch()
 	const movieFilter = match.params.movieFilter
 
-	return movieFilters[movieFilter] ? (
+	return movieFilters.get(movieFilter) ? (
 		<Redirect to={`/${movieFilter}/1`} />
 	) : (
 		<PageNotFound />

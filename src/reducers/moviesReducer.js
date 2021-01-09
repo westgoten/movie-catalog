@@ -2,9 +2,10 @@ import { createReducer } from '@reduxjs/toolkit'
 import { fetchMoviesByFilter } from '../actions/moviesActions'
 
 const initialState = {
-	movieList: null,
-	pending: true,
-	error: null
+	pagination: null,
+	movieList: [],
+	isRequestPending: true,
+	requestError: null
 }
 
 const moviesReducer = createReducer(
@@ -12,19 +13,23 @@ const moviesReducer = createReducer(
 	{
 		[fetchMoviesByFilter.pending]: (state) => ({
 			...state,
-			pending: true,
-			error: null
+			isRequestPending: true,
+			requestError: null
 		}),
 		[fetchMoviesByFilter.fulfilled]: (state, action) => ({
 			...state,
-			movieList: action.payload,
-			pending: false,
-			error: null
+			pagination: {
+				page: action.payload.page,
+				totalPages: action.payload.totalPages
+			},
+			movieList: action.payload.results,
+			isRequestPending: false,
+			requestError: null
 		}),
 		[fetchMoviesByFilter.rejected]: (state, action) => ({
 			...state,
-			pending: false,
-			error: action.payload
+			isRequestPending: false,
+			requestError: action.payload
 		})
 	},
 	[],

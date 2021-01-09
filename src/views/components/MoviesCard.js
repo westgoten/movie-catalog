@@ -1,15 +1,17 @@
 import '../style/css/MoviesCard.css'
 
-function MoviesCard() {
+function MoviesCard({ movie }) {
 	return (
 		<div className='movies-card'>
 			<img alt='Movie poster' className='movies-card-image' />
 			<div className='movies-card-overview'>
-				<span className='movies-card-name'>Jiu Jitsu</span>
-				<span className='movies-card-genres'>Action, Thriller</span>
+				<span className='movies-card-name'>{movie.title}</span>
+				<span className='movies-card-genres'>
+					{movie.genres.join(', ')}
+				</span>
 			</div>
 			<div className='movies-card-rating-border'>
-				<span className='movies-card-rating'>7.7</span>
+				<span className='movies-card-rating'>{movie.voteAverage}</span>
 			</div>
 		</div>
 	)
