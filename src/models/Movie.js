@@ -8,6 +8,18 @@ class Movie {
 		this.fullPosterPath = null
 		this.genres = []
 	}
+
+	toPOJO() {
+		return {
+			posterPath: this.posterPath,
+			genreIDs: this.genreIDs,
+			id: this.id,
+			title: this.title,
+			voteAverage: this.voteAverage,
+			fullPosterPath: this.fullPosterPath,
+			genres: this.genres
+		}
+	}
 }
 
 export default Movie

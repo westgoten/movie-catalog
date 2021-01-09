@@ -1,7 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 import App from './views/components/App'
+import store from './store'
 import reportWebVitals from './utils/reportWebVitals'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './views/style/css/index.css'
@@ -9,7 +11,9 @@ import './views/style/css/index.css'
 ReactDOM.render(
 	<React.StrictMode>
 		<BrowserRouter forceRefresh={false}>
-			<App />
+			<Provider store={store}>
+				<App />
+			</Provider>
 		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root')

@@ -9,7 +9,7 @@ import APIConfiguration from '../models/APIConfiguration'
 const dataHandlers = {
 	prepareMovies: (data) => {
 		if (data.success === undefined || data.success)
-			return new MovieList(data)
+			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareMovieDetails: (data) => {
@@ -32,7 +32,7 @@ const dataHandlers = {
 	},
 	prepareRecommendations: (data) => {
 		if (data.success === undefined || data.success)
-			return new MovieList(data)
+			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareVideos: (data) => {
@@ -55,7 +55,7 @@ const dataHandlers = {
 	},
 	prepareSearch: (data) => {
 		if (data.success === undefined || data.success)
-			return new MovieList(data)
+			return new MovieList(data).toPOJO()
 		return data
 	}
 }
