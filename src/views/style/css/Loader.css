@@ -1,0 +1,21 @@
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.loader {
+  width: 7.8125rem;
+  height: 7.8125rem;
+  border-top: 0.25rem solid orange;
+  border-radius: 100%;
+  margin-bottom: 4.375rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

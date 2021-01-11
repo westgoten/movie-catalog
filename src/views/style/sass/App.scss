@@ -21,6 +21,8 @@
 }
 
 .main {
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
 	padding: ($page-padding-y + 1) $page-padding-x;
 	width: 100%;
