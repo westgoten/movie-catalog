@@ -1,4 +1,7 @@
 import { Switch, Route, Link } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchGenres } from '../../actions/genresActions'
 import Footer from './Footer'
 import Header from './Header'
 import MoviesRedirect from './MoviesRedirect'
@@ -7,6 +10,13 @@ import PageNotFound from './PageNotFound'
 import '../style/css/App.css'
 
 function App() {
+	const dispatch = useDispatch()
+
+	useEffect(() => {
+		dispatch(fetchGenres())
+		// eslint-disable-next-line
+	}, [])
+
 	return (
 		<div className='app'>
 			<Header />

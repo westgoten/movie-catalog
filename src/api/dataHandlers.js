@@ -45,7 +45,7 @@ const dataHandlers = {
 	},
 	prepareGenres: (data) => {
 		if (data.success === undefined || data.success)
-			return new GenreList(data)
+			return new GenreList(data).toPOJO()
 		return data
 	},
 	prepareConfiguration: (data) => {
