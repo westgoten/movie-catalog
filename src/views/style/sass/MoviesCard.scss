@@ -11,7 +11,6 @@ $rating-border-size: 30px;
 	display: flex;
 	flex-direction: column;
 	background-color: $theme-primary-color;
-	min-height: 400px;
 	max-width: 300px;
 	width: 100%;
 	justify-self: center;
@@ -20,7 +19,8 @@ $rating-border-size: 30px;
 }
 
 .movies-card-image {
-	min-height: $image-height;
+	width: 100%;
+	height: auto;
 	background-color: lightslategray;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;

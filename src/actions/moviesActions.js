@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getMovies } from '../api/apiMovieDB'
 import movieFilters from '../utils/consts/movieFilters'
+import handleRequestError from '../utils/handleRequestError'
 
 export const fetchMoviesByFilter = createAsyncThunk(
 	'fetchMoviesByFilter',
@@ -12,13 +13,7 @@ export const fetchMoviesByFilter = createAsyncThunk(
 			const response = await getMovies(filter, page)
 			return response.data
 		} catch (err) {
-			if (err.response) {
-				return rejectWithValue(err.response.data)
-			} else if (err.request) {
-				return rejectWithValue('Failed to connect to server')
-			} else {
-				return rejectWithValue(err.message)
-			}
+			return handleRequestError(err, rejectWithValue)
 		}
 	}
 )

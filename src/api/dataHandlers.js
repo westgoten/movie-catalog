@@ -8,17 +8,16 @@ import APIConfiguration from '../models/APIConfiguration'
 
 const dataHandlers = {
 	prepareMovies: (data) => {
-		if (data.success === undefined || data.success)
+		if (data.status_message === undefined)
 			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareMovieDetails: (data) => {
-		if (data.success === undefined || data.success)
-			return new MovieDetails(data)
+		if (data.status_message === undefined) return new MovieDetails(data)
 		return data
 	},
 	prepareCredits: (data) => {
-		if (data.success === undefined || data.success) {
+		if (data.status_message === undefined) {
 			const credits = new Credits(data)
 			credits.crew = credits.getDirectorAndScreenplay()
 			return credits
@@ -26,17 +25,16 @@ const dataHandlers = {
 		return data
 	},
 	prepareImages: (data) => {
-		if (data.success === undefined || data.success)
-			return new ImageLists(data)
+		if (data.status_message === undefined) return new ImageLists(data)
 		return data
 	},
 	prepareRecommendations: (data) => {
-		if (data.success === undefined || data.success)
+		if (data.status_message === undefined)
 			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareVideos: (data) => {
-		if (data.success === undefined || data.success) {
+		if (data.status_message === undefined) {
 			const videoList = new VideoList(data)
 			videoList.generateVideosPaths()
 			return videoList
@@ -44,17 +42,17 @@ const dataHandlers = {
 		return data
 	},
 	prepareGenres: (data) => {
-		if (data.success === undefined || data.success)
+		if (data.status_message === undefined)
 			return new GenreList(data).toPOJO()
 		return data
 	},
 	prepareConfiguration: (data) => {
-		if (data.success === undefined || data.success)
-			return new APIConfiguration(data)
+		if (data.status_message === undefined)
+			return new APIConfiguration(data).toPOJO()
 		return data
 	},
 	prepareSearch: (data) => {
-		if (data.success === undefined || data.success)
+		if (data.status_message === undefined)
 			return new MovieList(data).toPOJO()
 		return data
 	}

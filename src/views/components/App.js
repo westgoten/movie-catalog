@@ -1,6 +1,7 @@
 import { Switch, Route, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { fetchConfiguration } from '../../actions/configurationActions'
 import { fetchGenres } from '../../actions/genresActions'
 import Footer from './Footer'
 import Header from './Header'
@@ -13,6 +14,7 @@ function App() {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
+		dispatch(fetchConfiguration())
 		dispatch(fetchGenres())
 		// eslint-disable-next-line
 	}, [])

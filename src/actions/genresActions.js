@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { getGenres } from '../api/apiMovieDB'
+import handleRequestError from '../utils/handleRequestError'
 
 export const fetchGenres = createAsyncThunk(
 	'fetchGenres',
@@ -8,13 +9,7 @@ export const fetchGenres = createAsyncThunk(
 			const response = await getGenres()
 			return response.data
 		} catch (err) {
-			if (err.response) {
-				return rejectWithValue(err.response.data)
-			} else if (err.request) {
-				return rejectWithValue('Failed to connect to server')
-			} else {
-				return rejectWithValue(err.message)
-			}
+			return handleRequestError(err, rejectWithValue)
 		}
 	}
 )
