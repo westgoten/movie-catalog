@@ -20,9 +20,11 @@ function MoviesCard({ movie }) {
 				<span className='movies-card-genres'>
 					{getMovieGenreNameList()}
 				</span>
-			</div>
-			<div className='movies-card-rating-border'>
-				<span className='movies-card-rating'>{movie.voteAverage}</span>
+				<div className='movies-card-rating-border'>
+					<span className='movies-card-rating'>
+						{movie.voteAverage}
+					</span>
+				</div>
 			</div>
 		</div>
 	)

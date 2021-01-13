@@ -3,11 +3,9 @@
 $card-border-radius: 4px;
 $card-overview-padding-vertical: 24px;
 $card-overview-padding-horizontal: 16px;
-$image-height: 325px;
 $rating-border-size: 30px;
 
 .movies-card {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	background-color: $theme-primary-color;
@@ -15,7 +13,6 @@ $rating-border-size: 30px;
 	width: 100%;
 	justify-self: center;
 	border-radius: $card-border-radius;
-	z-index: 1;
 }
 
 .movies-card-image {
@@ -27,15 +24,18 @@ $rating-border-size: 30px;
 }
 
 .movies-card-overview {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	flex: 1;
 	padding: $card-overview-padding-vertical $card-overview-padding-horizontal;
 	font-family: Arial, sans-serif;
+	z-index: 1;
 }
 
 .movies-card-name {
 	font-size: 16px;
+	font-weight: bold;
 	margin-bottom: 8px;
 	word-wrap: break-word;
 }
@@ -50,8 +50,8 @@ $rating-border-size: 30px;
 	align-items: center;
 	justify-content: center;
 	position: absolute;
-	top: $image-height - ($rating-border-size / 2) - 2px;
-	right: $card-overview-padding-horizontal / 2;
+	top: -($rating-border-size / 2) - 4px;
+	right: $card-overview-padding-horizontal;
 	width: $rating-border-size;
 	height: $rating-border-size;
 	border-radius: 100%;
@@ -61,4 +61,9 @@ $rating-border-size: 30px;
 
 .movies-card-rating {
 	font-size: 14px;
+	font-weight: bold;
+
+	@media (max-width: $small-width) {
+		font-size: 13px;
+	}
 }
