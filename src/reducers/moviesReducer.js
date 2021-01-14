@@ -17,7 +17,6 @@ const moviesReducer = createReducer(
 			requestError: null
 		}),
 		[fetchMoviesByFilter.fulfilled]: (state, action) => ({
-			...state,
 			pagination: {
 				page: action.payload.page,
 				totalPages: action.payload.totalPages

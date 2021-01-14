@@ -1,17 +1,13 @@
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import { ORIGINAL_SIZE, POSTER_SIZE } from '../../utils/consts/imageSizes'
 import '../style/css/MoviesCard.css'
 
 function MoviesCard({ movie }) {
-	const imagesConfig = useShallowEqualSelector(
-		(state) => state.configuration.imagesConfig
-	)
 	const genreList = useShallowEqualSelector((state) => state.genres.genreList)
 
 	return (
 		<div className='movies-card'>
 			<img
-				src={getPosterFullPath()}
+				src={movie.posterFullPath}
 				alt='Movie poster'
 				className='movies-card-image'
 			/>
@@ -28,14 +24,6 @@ function MoviesCard({ movie }) {
 			</div>
 		</div>
 	)
-
-	function getPosterFullPath() {
-		if (imagesConfig) {
-			if (imagesConfig.posterSizes.includes(POSTER_SIZE))
-				return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
-			return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
-		}
-	}
 
 	function getMovieGenreNameList() {
 		return genreList

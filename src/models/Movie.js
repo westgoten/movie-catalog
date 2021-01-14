@@ -5,6 +5,7 @@ class Movie {
 		this.id = data.id
 		this.title = data.title
 		this.voteAverage = data.vote_average
+		this.posterFullPath = null
 	}
 
 	toPOJO() {
@@ -13,7 +14,8 @@ class Movie {
 			genreIDs: this.genreIDs,
 			id: this.id,
 			title: this.title,
-			voteAverage: this.voteAverage
+			voteAverage: this.voteAverage,
+			posterFullPath: this.posterFullPath
 		}
 	}
 }

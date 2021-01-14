@@ -14,12 +14,20 @@ import '../style/css/MoviesPage.css'
 
 function MoviesPage() {
 	const dispatch = useDispatch()
+
 	const movieList = useShallowEqualSelector((state) => state.movies.movieList)
-	const isRequestPending = useShallowEqualSelector(
+	const areMoviesPending = useShallowEqualSelector(
 		(state) => state.movies.isRequestPending
 	)
 	const requestError = useShallowEqualSelector(
 		(state) => state.movies.requestError
+	)
+
+	const imagesConfig = useShallowEqualSelector(
+		(state) => state.configuration.imagesConfig
+	)
+	const isConfigurationPending = useShallowEqualSelector(
+		(state) => state.configuration.isRequestPending
 	)
 
 	const match = useRouteMatch()
@@ -33,15 +41,17 @@ function MoviesPage() {
 	)
 
 	useEffect(() => {
-		if (isPathValid())
-			dispatch(fetchMoviesByFilter({ filter: movieFilter, page }))
+		if (isPathValid() && !isConfigurationPending)
+			dispatch(
+				fetchMoviesByFilter({ imagesConfig, filter: movieFilter, page })
+			)
 		// eslint-disable-next-line
-	}, [movieFilter, page, isPathValid])
+	}, [movieFilter, page, isPathValid, isConfigurationPending, imagesConfig])
 
 	return isPathValid() ? (
 		<div className='movies-page'>
 			<MoviesTabs />
-			{isRequestPending ? (
+			{areMoviesPending || isConfigurationPending ? (
 				<Loader />
 			) : (
 				<>

@@ -16,7 +16,6 @@ const configurationReducer = createReducer(
 			requestError: null
 		}),
 		[fetchConfiguration.fulfilled]: (state, action) => ({
-			...state,
 			imagesConfig: action.payload.images,
 			isRequestPending: false,
 			requestError: null
