@@ -1,9 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getMovies } from '../api/apiMovieDB'
 import fetchImage from '../api/fetchImage'
 import movieFilters from '../utils/consts/movieFilters'
 import handleRequestError from '../utils/handleRequestError'
 import { ORIGINAL_SIZE, POSTER_SIZE } from '../utils/consts/imageSizes'
+import { FULFILLED } from '../utils/consts/settledPromiseStatus'
 
 export const fetchMoviesByFilter = createAsyncThunk(
 	'fetchMoviesByFilter',
@@ -13,21 +14,7 @@ export const fetchMoviesByFilter = createAsyncThunk(
 	) => {
 		try {
 			const response = await getMovies(filter, page)
-			const movieList = response.data.results
-			if (imagesConfig) {
-				const imagesPromises = movieList.map((movie) =>
-					fetchImage(getPosterFullPath(imagesConfig, movie))
-				)
-				const imagesOutputs = await Promise.allSettled(imagesPromises)
-				response.data.results.forEach((movie, index) => {
-					const imageOutput = imagesOutputs[index]
-					if (imageOutput.status === 'fulfilled') {
-						movie.posterFullPath = URL.createObjectURL(
-							imageOutput.value.data
-						)
-					}
-				})
-			}
+			if (imagesConfig) await addImages(imagesConfig, response)
 			return response.data
 		} catch (err) {
 			console.log(err)
@@ -36,8 +23,24 @@ export const fetchMoviesByFilter = createAsyncThunk(
 	}
 )
 
+async function addImages(imagesConfig, response) {
+	const movieList = response.data.results
+	const imagesPromises = movieList.map((movie) =>
+		fetchImage(getPosterFullPath(imagesConfig, movie))
+	)
+	const imagesOutputs = await Promise.allSettled(imagesPromises)
+	movieList.forEach((movie, index) => {
+		const imageOutput = imagesOutputs[index]
+		if (imageOutput.status === FULFILLED) {
+			movie.posterFullPath = URL.createObjectURL(imageOutput.value.data)
+		}
+	})
+}
+
 function getPosterFullPath(imagesConfig, movie) {
 	if (imagesConfig.posterSizes.includes(POSTER_SIZE))
 		return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
 	return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
 }
+
+export const removeOldMoviePosters = createAction('removeOldMoviePosters')

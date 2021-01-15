@@ -1,5 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { fetchMoviesByFilter } from '../actions/moviesActions'
+import {
+	fetchMoviesByFilter,
+	removeOldMoviePosters
+} from '../actions/moviesActions'
 
 const initialState = {
 	pagination: null,
@@ -29,7 +32,19 @@ const moviesReducer = createReducer(
 			...state,
 			isRequestPending: false,
 			requestError: action.payload
-		})
+		}),
+		[removeOldMoviePosters]: (state) => {
+			if (state.movieList.length > 0) {
+				return {
+					...state,
+					movieList: state.movieList.map((movie) => {
+						URL.revokeObjectURL(movie.posterFullPath)
+						return { ...movie, posterFullPath: null }
+					})
+				}
+			}
+			return state
+		}
 	},
 	[],
 	(state) => state
