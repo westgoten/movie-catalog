@@ -15,12 +15,45 @@ $rating-border-size: 30px;
 	border-radius: $card-border-radius;
 }
 
+.movies-card-image-container {
+	position: relative;
+	height: 0;
+	overflow: hidden;
+	padding-top: $poster-aspect-ratio * 100%;
+}
+
 .movies-card-image {
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: auto;
-	background-color: lightslategray;
+	height: 100%;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
+}
+
+.movies-card-image-placeholder {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	border-top-right-radius: $card-border-radius;
+	border-top-left-radius: $card-border-radius;
+}
+
+.movies-card-image-placeholder-icon {
+	font-size: 28px;
+}
+
+.movies-card-image-placeholder-text {
+	text-transform: uppercase;
+	font-size: 16px;
 }
 
 .movies-card-overview {

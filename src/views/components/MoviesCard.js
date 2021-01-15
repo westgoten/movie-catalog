@@ -6,11 +6,22 @@ function MoviesCard({ movie }) {
 
 	return (
 		<div className='movies-card'>
-			<img
-				src={movie.posterFullPath}
-				alt='Movie poster'
-				className='movies-card-image'
-			/>
+			<div className='movies-card-image-container'>
+				{movie.isTherePoster ? (
+					<img
+						src={movie.posterFullPath}
+						alt='Movie poster'
+						className='movies-card-image'
+					/>
+				) : (
+					<div className='movies-card-image-placeholder'>
+						<i className='fas fa-exclamation-triangle movies-card-image-placeholder-icon'></i>
+						<p className='movies-card-image-placeholder-text'>
+							No image
+						</p>
+					</div>
+				)}
+			</div>
 			<div className='movies-card-overview'>
 				<span className='movies-card-name'>{movie.title}</span>
 				<span className='movies-card-genres'>

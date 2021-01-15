@@ -33,6 +33,9 @@ async function addImages(imagesConfig, response) {
 		const imageOutput = imagesOutputs[index]
 		if (imageOutput.status === FULFILLED) {
 			movie.posterFullPath = URL.createObjectURL(imageOutput.value.data)
+			movie.isTherePoster = true
+		} else {
+			movie.isTherePoster = false
 		}
 	})
 }
