@@ -1,17 +1,22 @@
+import { useState } from 'react'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
+import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
+import { NO_RATING } from '../../utils/consts/movieRating'
 import '../style/css/MoviesCard.css'
 
 function MoviesCard({ movie }) {
+	const [hasFullyLoaded, setFullyLoaded] = useState(false)
 	const genreList = useShallowEqualSelector((state) => state.genres.genreList)
 
 	return (
-		<div className='movies-card'>
+		<div className='movies-card' {...(hasFullyLoaded ? VISIBLE : NONE)}>
 			<div className='movies-card-image-container'>
-				{movie.isTherePoster ? (
+				{movie.posterFullPath ? (
 					<img
 						src={movie.posterFullPath}
 						alt='Movie poster'
 						className='movies-card-image'
+						onLoad={handleImageOnLoad}
 					/>
 				) : (
 					<div className='movies-card-image-placeholder'>
@@ -29,12 +34,18 @@ function MoviesCard({ movie }) {
 				</span>
 				<div className='movies-card-rating-border'>
 					<span className='movies-card-rating'>
-						{movie.voteAverage}
+						{movie.voteAverage === 0
+							? NO_RATING
+							: movie.voteAverage}
 					</span>
 				</div>
 			</div>
 		</div>
 	)
+
+	function handleImageOnLoad() {
+		setFullyLoaded(true)
+	}
 
 	function getMovieGenreNameList() {
 		return genreList

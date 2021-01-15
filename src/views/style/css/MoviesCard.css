@@ -6,6 +6,11 @@
   width: 100%;
   justify-self: center;
   border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.movies-card[visible] {
+  opacity: 1;
 }
 
 .movies-card-image-container {

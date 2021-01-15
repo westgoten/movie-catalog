@@ -13,6 +13,12 @@ $rating-border-size: 30px;
 	width: 100%;
 	justify-self: center;
 	border-radius: $card-border-radius;
+	opacity: 0;
+	transition: opacity 0.5s;
+
+	&[visible] {
+		opacity: 1;
+	}
 }
 
 .movies-card-image-container {
