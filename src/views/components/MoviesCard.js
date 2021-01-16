@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
 import { NO_RATING } from '../../utils/consts/movieRating'
@@ -10,7 +11,7 @@ function MoviesCard({ movie }) {
 
 	return (
 		<div className='movies-card' {...(hasFullyLoaded ? VISIBLE : NONE)}>
-			<div className='movies-card-image-container'>
+			<Link to='/' className='movies-card-image-link'>
 				{movie.posterFullPath ? (
 					<img
 						src={movie.posterFullPath}
@@ -26,9 +27,13 @@ function MoviesCard({ movie }) {
 						</p>
 					</div>
 				)}
-			</div>
+			</Link>
 			<div className='movies-card-overview'>
-				<span className='movies-card-name'>{movie.title}</span>
+				<span className='movies-card-name'>
+					<Link to='/' className='movies-card-link'>
+						{movie.title}
+					</Link>
+				</span>
 				<span className='movies-card-genres'>
 					{getMovieGenreNameList()}
 				</span>

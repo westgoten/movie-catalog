@@ -1,19 +1,31 @@
 .movies-card {
   display: flex;
   flex-direction: column;
-  background-color: #660500;
-  max-width: 300px;
   width: 100%;
-  justify-self: center;
   border-radius: 4px;
+  max-width: 300px;
+  justify-self: center;
+  background-color: #660500;
   opacity: 0;
-  transition: opacity 0.5s;
+  transform: translateY(0px);
+  transition: opacity 0.5s, transform 0.1s ease-out;
+}
+@media (hover: hover) {
+  .movies-card:hover {
+    transform: translateY(-16px);
+  }
 }
 .movies-card[visible] {
   opacity: 1;
 }
 
-.movies-card-image-container {
+.movies-card-link, .movies-card-image-link {
+  text-decoration: none;
+  outline: none;
+  color: white;
+}
+
+.movies-card-image-link {
   position: relative;
   height: 0;
   overflow: hidden;

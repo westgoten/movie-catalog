@@ -8,20 +8,34 @@ $rating-border-size: 30px;
 .movies-card {
 	display: flex;
 	flex-direction: column;
-	background-color: $theme-primary-color;
-	max-width: 300px;
 	width: 100%;
-	justify-self: center;
 	border-radius: $card-border-radius;
+	max-width: 300px;
+	justify-self: center;
+	background-color: $theme-primary-color;
 	opacity: 0;
-	transition: opacity 0.5s;
+	transform: translateY(0px);
+	transition: opacity 0.5s, transform 0.1s ease-out;
+
+	@media (hover: hover) {
+		&:hover {
+			transform: translateY(-16px);
+		}
+	}
 
 	&[visible] {
 		opacity: 1;
 	}
 }
 
-.movies-card-image-container {
+.movies-card-link {
+	text-decoration: none;
+	outline: none;
+	color: $theme-primary-text-color;
+}
+
+.movies-card-image-link {
+	@extend .movies-card-link;
 	position: relative;
 	height: 0;
 	overflow: hidden;
