@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
@@ -8,6 +8,10 @@ import '../style/css/MoviesCard.css'
 function MoviesCard({ movie }) {
 	const [hasFullyLoaded, setFullyLoaded] = useState(false)
 	const genreList = useShallowEqualSelector((state) => state.genres.genreList)
+
+	useEffect(() => {
+		if (!movie.posterFullPath) setFullyLoaded(true)
+	}, [movie.posterFullPath])
 
 	return (
 		<div className='movies-card' {...(hasFullyLoaded ? VISIBLE : NONE)}>
