@@ -1,5 +1,19 @@
 @use 'consts' as *;
 
+:root {
+	--page-background: #{radial-gradient(
+			darken($theme-primary-color, 12) 25%,
+			$page-background-color
+		)};
+
+	@media (max-width: $small-width) {
+		--page-background: #{radial-gradient(
+				darken($theme-primary-color, 10) 50%,
+				$page-background-color
+			)};
+	}
+}
+
 html {
 	font-size: 16px;
 

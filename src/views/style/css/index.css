@@ -1,3 +1,12 @@
+:root {
+  --page-background: radial-gradient(#290200 25%, black);
+}
+@media (max-width: 736px) {
+  :root {
+    --page-background: radial-gradient(#330300 50%, black);
+  }
+}
+
 html {
   font-size: 16px;
 }

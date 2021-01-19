@@ -2,17 +2,20 @@
 
 $tab-border-width: 1px;
 $tab-border-radius: 4px;
+$tab-border-color: darken(white, 15);
+$tab-container-margin-bottom: 3.375rem;
 
 .tab-container {
 	display: inline-flex;
 	align-items: center;
-	margin-bottom: 4.375rem;
+	margin-top: 1rem;
+	margin-bottom: $tab-container-margin-bottom;
+	font-size: 16px;
 }
 
 .tab {
-	border: 1px solid lighten($color: $page-background-color, $amount: 25);
+	border: 1px solid $tab-border-color;
 	border-right: none;
-	font-weight: 500;
 	color: $theme-primary-text-color;
 	background-color: transparent;
 	padding: 8px 12px;
@@ -20,7 +23,7 @@ $tab-border-radius: 4px;
 	cursor: pointer;
 
 	@media (max-width: $small-width) {
-		font-size: 0.9em;
+		font-size: 0.7em;
 	}
 
 	&:first-child {
@@ -29,13 +32,12 @@ $tab-border-radius: 4px;
 	}
 
 	&:last-child {
-		border-right: 1px solid
-			lighten($color: $page-background-color, $amount: 25);
+		border-right: 1px solid $tab-border-color;
 		border-top-right-radius: $tab-border-radius;
 		border-bottom-right-radius: $tab-border-radius;
 	}
 }
 
 .tab-selected {
-	background-color: #28a745;
+	background-color: lighten($theme-primary-color, 12);
 }

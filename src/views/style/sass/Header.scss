@@ -15,7 +15,7 @@ $background-color: $theme-primary-color;
 	align-items: center;
 	padding: $page-padding-y $page-padding-x;
 	background-color: $background-color;
-	box-shadow: 0.5px 0.5px 2px black;
+	box-shadow: 0.5px 0.5px 6px black;
 	visibility: visible;
 	transition: 0.4s;
 	z-index: 3;
@@ -27,6 +27,7 @@ $background-color: $theme-primary-color;
 
 	@media (max-width: $small-width) {
 		padding: ($page-padding-y / 2) ($page-padding-x / 3);
+		box-shadow: 0.5px 0.5px 3px black;
 	}
 }
 
