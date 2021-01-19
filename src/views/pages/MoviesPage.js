@@ -18,6 +18,9 @@ function MoviesPage() {
 	const dispatch = useDispatch()
 
 	const movieList = useShallowEqualSelector((state) => state.movies.movieList)
+	const pagination = useShallowEqualSelector(
+		(state) => state.movies.pagination
+	)
 	const areMoviesPending = useShallowEqualSelector(
 		(state) => state.movies.isRequestPending
 	)
@@ -56,10 +59,12 @@ function MoviesPage() {
 			<MoviesTabs />
 			{areMoviesPending || isConfigurationPending ? (
 				<Loader />
+			) : requestError || !movieList || movieList.length === 0 ? (
+				<></>
 			) : (
 				<>
 					<MoviesGrid movieList={movieList} />
-					<MoviesPaginator />
+					<MoviesPaginator pagination={pagination} />
 				</>
 			)}
 		</div>

@@ -372,6 +372,15 @@
   flex-grow: 1;
 }
 
+.paginator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: red;
+  padding: 8px;
+}
+
 .opacity-layer {
   position: fixed;
   top: 0;
