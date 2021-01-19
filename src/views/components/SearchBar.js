@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react'
-import '../style/css/SearchBar.css'
 
 function SearchBar() {
 	const [isSearchOpen, setSearchOpen] = useState(false)

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import useScreenSize from '../../utils/hooks/useScreenSize'
 import SideNavbar from './SideNavbar'
 import { MEDIUM_WIDTH } from '../../utils/consts/screenSizes'
-import '../style/css/TopNavbar.css'
 
 function TopNavbar() {
 	const isScreenSizeMedium = useScreenSize(MEDIUM_WIDTH)

@@ -1,5 +1,4 @@
 import MoviesCard from './MoviesCard'
-import '../style/css/MoviesGrid.css'
 
 function MoviesGrid({ movieList }) {
 	return (

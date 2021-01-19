@@ -6,7 +6,6 @@ import SearchBar from './SearchBar'
 import TopNavbar from './TopNavbar'
 import { SMALL_WIDTH } from '../../utils/consts/screenSizes'
 import { INVISIBLE, NONE } from '../../utils/consts/componentAttributes'
-import '../style/css/Header.css'
 
 function Header() {
 	const [scrollYOffset, setScrollYOffset] = useState(0)

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NONE, VISIBLE } from '../../utils/consts/componentAttributes'
 import OpacityLayer from './OpacityLayer'
-import '../style/css/SideNavbar.css'
 
 function SideNavbar() {
 	const [isNavbarOpen, setNavbarOpen] = useState(false)

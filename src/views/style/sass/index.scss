@@ -1,4 +1,17 @@
 @use 'consts' as *;
+@use 'App';
+@use 'Footer';
+@use 'Header';
+@use 'Loader';
+@use 'MobileSearchBar';
+@use 'MoviesCard';
+@use 'MoviesGrid';
+@use 'MoviesPage';
+@use 'MoviesTabs';
+@use 'OpacityLayer';
+@use 'SearchBar';
+@use 'SideNavbar';
+@use 'TopNavbar';
 
 :root {
 	--page-background: #{radial-gradient(

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { OPENED, NONE } from '../../utils/consts/componentAttributes'
 import OpacityLayer from './OpacityLayer'
-import '../style/css/MobileSearchBar.css'
 
 function MobileSearchBar() {
 	const [isSearchOpen, setSearchOpen] = useState(false)

@@ -13,7 +13,6 @@ import PageNotFound from '../components/PageNotFound'
 import Loader from '../components/Loader'
 import movieFilters from '../../utils/consts/movieFilters'
 import isPageValid from '../../utils/isPageValid'
-import '../style/css/MoviesPage.css'
 
 function MoviesPage() {
 	const dispatch = useDispatch()

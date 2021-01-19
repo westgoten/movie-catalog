@@ -1,5 +1,3 @@
-import '../style/css/Loader.css'
-
 function Loader() {
 	return (
 		<div className='loader-container'>

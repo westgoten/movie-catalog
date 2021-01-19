@@ -8,7 +8,6 @@ import Header from './Header'
 import MoviesRedirect from './MoviesRedirect'
 import MoviesPage from '../pages/MoviesPage'
 import PageNotFound from './PageNotFound'
-import '../style/css/App.css'
 
 function App() {
 	const dispatch = useDispatch()

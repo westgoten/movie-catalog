@@ -1,6 +1,5 @@
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import movieFilters from '../../utils/consts/movieFilters'
-import '../style/css/MoviesTabs.css'
 
 function MoviesTabs() {
 	const history = useHistory()
