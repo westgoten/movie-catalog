@@ -3,17 +3,27 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border: 1px solid white;
+  background-color: rgba(102, 5, 0, 0.5);
   border-radius: 4px;
   width: 100%;
   padding: 16px 8px;
 }
 
-.page-link {
-  text-decoration: none;
+.paginator-button {
+  outline: none;
+  background: none;
+  border: none;
   color: white;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
-.page-link-active {
+.paginator-button-active {
   color: orange;
+}
+
+.paginator-button-disabled {
+  color: gray;
+  cursor: default;
 }

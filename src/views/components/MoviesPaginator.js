@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import {
 	initializePaginator,
 	changeCurrentPage
@@ -10,6 +10,7 @@ import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 
 function MoviesPaginator({ pagination, match }) {
 	const dispatch = useDispatch()
+	const history = useHistory()
 	const paginator = useShallowEqualSelector((state) => state.movies.paginator)
 
 	const movieFilter = match.params.movieFilter
@@ -27,35 +28,53 @@ function MoviesPaginator({ pagination, match }) {
 
 	return (
 		<div className='paginator'>
-			{page > 1 ? (
-				<>
-					<Link to={`/${movieFilter}/${1}`} className='page-link'>
-						<i className='fas fa-angle-double-left'></i>
-					</Link>
-					<Link
-						to={`/${movieFilter}/${page - 1}`}
-						className='page-link'>
-						<i className='fas fa-angle-left'></i>
-					</Link>
-				</>
-			) : null}
+			<button
+				className={
+					'paginator-button' +
+					(page > 1 ? '' : ' paginator-button-disabled')
+				}
+				onClick={goToFirstPage}>
+				<i className='fas fa-angle-double-left'></i>
+			</button>
+			<button
+				className={
+					'paginator-button' +
+					(page > 1 ? '' : ' paginator-button-disabled')
+				}
+				onClick={goToPreviousPage}>
+				<i className='fas fa-angle-left'></i>
+			</button>
 			{createPageLinks()}
-			{page < pagination.totalPages ? (
-				<>
-					<Link
-						to={`/${movieFilter}/${page + 1}`}
-						className='page-link'>
-						<i className='fas fa-angle-right'></i>
-					</Link>
-					<Link
-						to={`/${movieFilter}/${pagination.totalPages}`}
-						className='page-link'>
-						<i className='fas fa-angle-double-right'></i>
-					</Link>
-				</>
-			) : null}
+			<button
+				className={
+					'paginator-button' +
+					(page < pagination.totalPages
+						? ''
+						: ' paginator-button-disabled')
+				}
+				onClick={goToNextPage}>
+				<i className='fas fa-angle-right'></i>
+			</button>
+			<button
+				className={
+					'paginator-button' +
+					(page < pagination.totalPages
+						? ''
+						: ' paginator-button-disabled')
+				}
+				onClick={goToLastPage}>
+				<i className='fas fa-angle-double-right'></i>
+			</button>
 		</div>
 	)
+
+	function goToFirstPage() {
+		if (page > 1) history.push(`/${movieFilter}/${1}`)
+	}
+
+	function goToPreviousPage() {
+		if (page > 1) history.push(`/${movieFilter}/${page - 1}`)
+	}
 
 	function createPageLinks() {
 		const pageLinks = []
@@ -65,20 +84,34 @@ function MoviesPaginator({ pagination, match }) {
 			pageNumber++
 		) {
 			pageLinks.push(
-				<Link
+				<button
 					key={pageNumber}
-					to={`/${movieFilter}/${pageNumber}`}
 					className={
-						'page-link' +
+						'paginator-button' +
 						(pageNumber === paginator.pages[paginator.currentIndex]
-							? ' page-link-active'
+							? ' paginator-button-active'
 							: '')
-					}>
+					}
+					onClick={() => goToPage(pageNumber)}>
 					{pageNumber}
-				</Link>
+				</button>
 			)
 		}
 		return pageLinks
+	}
+
+	function goToPage(pageNumber) {
+		history.push(`/${movieFilter}/${pageNumber}`)
+	}
+
+	function goToNextPage() {
+		if (page < pagination.totalPages)
+			history.push(`/${movieFilter}/${page + 1}`)
+	}
+
+	function goToLastPage() {
+		if (page < pagination.totalPages)
+			history.push(`/${movieFilter}/${pagination.totalPages}`)
 	}
 }
 

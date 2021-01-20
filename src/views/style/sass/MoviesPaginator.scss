@@ -5,17 +5,27 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	border: 1px solid $theme-primary-text-color;
+	background-color: rgba($theme-primary-color, 0.5);
 	border-radius: 4px;
 	width: 100%;
 	padding: 16px 8px;
 }
 
-.page-link {
-	text-decoration: none;
+.paginator-button {
+	outline: none;
+	background: none;
+	border: none;
 	color: $theme-primary-text-color;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
 }
 
-.page-link-active {
+.paginator-button-active {
 	color: $theme-secondary-color;
+}
+
+.paginator-button-disabled {
+	color: gray;
+	cursor: default;
 }
