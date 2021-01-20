@@ -17,7 +17,6 @@ export const fetchMoviesByFilter = createAsyncThunk(
 			if (imagesConfig) await addImages(imagesConfig, response)
 			return response.data
 		} catch (err) {
-			console.log(err)
 			return handleRequestError(err, rejectWithValue)
 		}
 	}
@@ -43,3 +42,7 @@ function getPosterFullPath(imagesConfig, movie) {
 }
 
 export const removeOldMoviePosters = createAction('removeOldMoviePosters')
+
+export const initializePaginator = createAction('initializePaginator')
+
+export const changeCurrentPage = createAction('changeCurrentPage')

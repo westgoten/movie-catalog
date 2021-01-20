@@ -1,61 +1,80 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import {
+	initializePaginator,
+	changeCurrentPage
+} from '../../actions/moviesActions'
 import getDefaultMovieFilter from '../../utils/getDefaultMovieFilter'
+import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 
 function MoviesPaginator({ pagination, match }) {
+	const dispatch = useDispatch()
+	const paginator = useShallowEqualSelector((state) => state.movies.paginator)
+
 	const movieFilter = match.params.movieFilter
-	const page = Number(match.params.page)
-	const [paginator, setPaginator] = useState({
-		pages: [],
-		start: 0,
-		current: 0,
-		end: 9
-	})
+		? match.params.movieFilter
+		: getDefaultMovieFilter()
+	const page = match.params.page ? Number(match.params.page) : 1
 
 	useEffect(() => {
-		const pages = []
-		for (let i = 1; i <= pagination.totalPages; i++) pages.push(i)
-		setPaginator((state) => ({ ...state, pages }))
-	}, [pagination.totalPages])
+		dispatch(initializePaginator())
+	}, [])
+
+	useEffect(() => {
+		dispatch(changeCurrentPage(page))
+	}, [page])
 
 	return (
 		<div className='paginator'>
-			<Link to='/' className='page-link'>
-				<i className='fas fa-angle-double-left'></i>
-			</Link>
-			<Link to='/' className='page-link'>
-				<i className='fas fa-angle-left'></i>
-			</Link>
+			{page > 1 ? (
+				<>
+					<Link to={`/${movieFilter}/${1}`} className='page-link'>
+						<i className='fas fa-angle-double-left'></i>
+					</Link>
+					<Link
+						to={`/${movieFilter}/${page - 1}`}
+						className='page-link'>
+						<i className='fas fa-angle-left'></i>
+					</Link>
+				</>
+			) : null}
 			{createPageLinks()}
-			<Link to='/' className='page-link'>
-				<i className='fas fa-angle-right'></i>
-			</Link>
-			<Link to='/' className='page-link'>
-				<i className='fas fa-angle-double-right'></i>
-			</Link>
+			{page < pagination.totalPages ? (
+				<>
+					<Link
+						to={`/${movieFilter}/${page + 1}`}
+						className='page-link'>
+						<i className='fas fa-angle-right'></i>
+					</Link>
+					<Link
+						to={`/${movieFilter}/${pagination.totalPages}`}
+						className='page-link'>
+						<i className='fas fa-angle-double-right'></i>
+					</Link>
+				</>
+			) : null}
 		</div>
 	)
 
 	function createPageLinks() {
 		const pageLinks = []
 		for (
-			let i = paginator.pages[paginator.start];
-			i <= paginator.pages[paginator.end];
-			i++
+			let pageNumber = paginator.pages[paginator.start];
+			pageNumber <= paginator.pages[paginator.end];
+			pageNumber++
 		) {
 			pageLinks.push(
 				<Link
-					key={i}
-					to={`/${
-						movieFilter ? movieFilter : getDefaultMovieFilter()
-					}/${i}`}
+					key={pageNumber}
+					to={`/${movieFilter}/${pageNumber}`}
 					className={
 						'page-link' +
-						(i === paginator.pages[paginator.current]
+						(pageNumber === paginator.pages[paginator.currentIndex]
 							? ' page-link-active'
 							: '')
 					}>
-					{i}
+					{pageNumber}
 				</Link>
 			)
 		}

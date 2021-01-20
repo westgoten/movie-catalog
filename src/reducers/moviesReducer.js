@@ -1,11 +1,21 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
 	fetchMoviesByFilter,
-	removeOldMoviePosters
+	removeOldMoviePosters,
+	initializePaginator,
+	changeCurrentPage
 } from '../actions/moviesActions'
+
+const LAST_PAGE_LINK_INDEX = 9
 
 const initialState = {
 	pagination: null,
+	paginator: {
+		pages: [],
+		start: 0,
+		currentIndex: 0,
+		end: LAST_PAGE_LINK_INDEX
+	},
 	movieList: [],
 	isRequestPending: true,
 	requestError: null
@@ -20,6 +30,7 @@ const moviesReducer = createReducer(
 			requestError: null
 		}),
 		[fetchMoviesByFilter.fulfilled]: (state, action) => ({
+			...state,
 			pagination: {
 				page: action.payload.page,
 				totalPages: action.payload.totalPages
@@ -41,6 +52,73 @@ const moviesReducer = createReducer(
 						URL.revokeObjectURL(movie.posterFullPath)
 						return { ...movie, posterFullPath: null }
 					})
+				}
+			}
+			return state
+		},
+		[initializePaginator]: (state) => {
+			if (
+				state.pagination &&
+				state.pagination.totalPages !== state.paginator.pages.length
+			) {
+				const pages = []
+				for (let i = 1; i <= state.pagination.totalPages; i++)
+					pages.push(i)
+				return {
+					...state,
+					paginator: {
+						...state.paginator,
+						pages,
+						start: 0,
+						currentIndex: 0,
+						end:
+							LAST_PAGE_LINK_INDEX < state.pagination.totalPages
+								? LAST_PAGE_LINK_INDEX
+								: state.pagination.totalPages - 1
+					}
+				}
+			}
+			return state
+		},
+		[changeCurrentPage]: (state, action) => {
+			if (
+				state.pagination &&
+				action.payload >= 1 &&
+				action.payload <= state.pagination.totalPages
+			) {
+				const pageIndex = action.payload - 1
+				if (pageIndex < state.paginator.start) {
+					return {
+						...state,
+						paginator: {
+							...state.paginator,
+							start: pageIndex,
+							currentIndex: pageIndex,
+							end:
+								state.paginator.end -
+								(state.paginator.start - pageIndex)
+						}
+					}
+				} else if (pageIndex > state.paginator.end) {
+					return {
+						...state,
+						paginator: {
+							...state.paginator,
+							start:
+								state.paginator.start +
+								(pageIndex - state.paginator.end),
+							currentIndex: pageIndex,
+							end: pageIndex
+						}
+					}
+				} else if (pageIndex !== state.paginator.currentIndex) {
+					return {
+						...state,
+						paginator: {
+							...state.paginator,
+							currentIndex: pageIndex
+						}
+					}
 				}
 			}
 			return state

@@ -16,6 +16,7 @@ const genresReducer = createReducer(
 			requestError: null
 		}),
 		[fetchGenres.fulfilled]: (state, action) => ({
+			...state,
 			genreList: action.payload.genres,
 			isRequestPending: false,
 			requestError: null
