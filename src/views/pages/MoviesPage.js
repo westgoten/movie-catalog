@@ -64,7 +64,7 @@ function MoviesPage() {
 			) : (
 				<>
 					<MoviesGrid movieList={movieList} />
-					<MoviesPaginator pagination={pagination} />
+					<MoviesPaginator pagination={pagination} match={match} />
 				</>
 			)}
 		</div>

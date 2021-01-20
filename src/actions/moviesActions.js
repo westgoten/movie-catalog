@@ -1,7 +1,7 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getMovies } from '../api/apiMovieDB'
 import fetchImage from '../api/fetchImage'
-import movieFilters from '../utils/consts/movieFilters'
+import getDefaultMovieFilter from '../utils/getDefaultMovieFilter'
 import handleRequestError from '../utils/handleRequestError'
 import { ORIGINAL_SIZE, POSTER_SIZE } from '../utils/consts/imageSizes'
 import { FULFILLED } from '../utils/consts/settledPromiseStatus'
@@ -9,7 +9,7 @@ import { FULFILLED } from '../utils/consts/settledPromiseStatus'
 export const fetchMoviesByFilter = createAsyncThunk(
 	'fetchMoviesByFilter',
 	async (
-		{ imagesConfig, filter = Array.from(movieFilters.keys())[0], page = 1 },
+		{ imagesConfig, filter = getDefaultMovieFilter(), page = 1 },
 		{ rejectWithValue }
 	) => {
 		try {
