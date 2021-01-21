@@ -2,11 +2,10 @@ import { createReducer } from '@reduxjs/toolkit'
 import {
 	fetchMoviesByFilter,
 	removeOldMoviePosters,
+	setPaginatorSize,
 	initializePaginator,
 	changeCurrentPage
 } from '../actions/moviesActions'
-
-const LAST_PAGE_LINK_INDEX = 9
 
 const initialState = {
 	pagination: null,
@@ -14,7 +13,8 @@ const initialState = {
 		pages: [],
 		start: 0,
 		currentIndex: 0,
-		end: LAST_PAGE_LINK_INDEX
+		end: 0,
+		size: 0
 	},
 	movieList: [],
 	isRequestPending: true,
@@ -56,14 +56,70 @@ const moviesReducer = createReducer(
 			}
 			return state
 		},
-		[initializePaginator]: (state) => {
-			if (
-				state.pagination &&
-				state.pagination.totalPages !== state.paginator.pages.length
-			) {
+		[setPaginatorSize]: (state, action) => {
+			console.log('setPaginatorSize: ', action.payload)
+			const totalPages = action.payload.totalPages
+			const paginatorSize =
+				action.payload.paginatorSize <= totalPages
+					? action.payload.paginatorSize
+					: totalPages
+			if (paginatorSize > 0) {
+				let start = state.paginator.start
+				let end = state.paginator.end
+				let current = state.paginator.currentIndex
+				let availableSpace = paginatorSize - 1
+
+				for (let i = availableSpace; i >= 0; i--) {
+					const pos = current - availableSpace
+					if (state.paginator.pages[pos]) {
+						start = pos
+						availableSpace -= current - start
+						break
+					}
+				}
+
+				if (availableSpace <= 0) {
+					end = current
+				} else {
+					for (let i = availableSpace; i >= 0; i--) {
+						const pos = current + availableSpace
+						if (state.paginator.pages[pos]) {
+							end = pos
+							availableSpace -= end - current
+							break
+						}
+					}
+				}
+
+				console.log(
+					'setPaginatorSize: start ',
+					start,
+					' end ',
+					end,
+					' current ',
+					current
+				)
+
+				return {
+					...state,
+					paginator: {
+						...state.paginator,
+						start,
+						end,
+						size: paginatorSize
+					}
+				}
+			}
+			console.log('setPaginatorSize: unable')
+			return state
+		},
+		[initializePaginator]: (state, action) => {
+			console.log('initializePaginator')
+			const totalPages = action.payload
+			console.log('totalPages: ', totalPages)
+			if (totalPages !== state.paginator.pages.length) {
 				const pages = []
-				for (let i = 1; i <= state.pagination.totalPages; i++)
-					pages.push(i)
+				for (let i = 1; i <= totalPages; i++) pages.push(i)
 				return {
 					...state,
 					paginator: {
@@ -71,23 +127,22 @@ const moviesReducer = createReducer(
 						pages,
 						start: 0,
 						currentIndex: 0,
-						end:
-							LAST_PAGE_LINK_INDEX < state.pagination.totalPages
-								? LAST_PAGE_LINK_INDEX
-								: state.pagination.totalPages - 1
+						end: 0
 					}
 				}
 			}
+			console.log('initializePaginator: unable to initialize')
 			return state
 		},
 		[changeCurrentPage]: (state, action) => {
+			console.log('changeCurrentPage: ', action.payload)
 			if (
-				state.pagination &&
-				action.payload >= 1 &&
-				action.payload <= state.pagination.totalPages
+				action.payload.page >= 1 &&
+				action.payload.page <= action.payload.totalPages
 			) {
-				const pageIndex = action.payload - 1
+				const pageIndex = action.payload.page - 1
 				if (pageIndex < state.paginator.start) {
+					console.log('start')
 					return {
 						...state,
 						paginator: {
@@ -100,6 +155,7 @@ const moviesReducer = createReducer(
 						}
 					}
 				} else if (pageIndex > state.paginator.end) {
+					console.log('end')
 					return {
 						...state,
 						paginator: {
@@ -111,16 +167,17 @@ const moviesReducer = createReducer(
 							end: pageIndex
 						}
 					}
-				} else if (pageIndex !== state.paginator.currentIndex) {
-					return {
-						...state,
-						paginator: {
-							...state.paginator,
-							currentIndex: pageIndex
-						}
+				}
+				console.log('current')
+				return {
+					...state,
+					paginator: {
+						...state.paginator,
+						currentIndex: pageIndex
 					}
 				}
 			}
+			console.log('changeCurrentPage: unable to change page')
 			return state
 		}
 	},

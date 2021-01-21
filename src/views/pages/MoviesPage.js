@@ -62,11 +62,9 @@ function MoviesPage() {
 			) : requestError || !movieList || movieList.length === 0 ? (
 				<></>
 			) : (
-				<>
-					<MoviesGrid movieList={movieList} />
-					<MoviesPaginator pagination={pagination} match={match} />
-				</>
+				<MoviesGrid movieList={movieList} />
 			)}
+			<MoviesPaginator pagination={pagination} match={match} />
 		</div>
 	) : (
 		<PageNotFound />

@@ -3,12 +3,13 @@
 .paginator {
 	box-sizing: border-box;
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: center;
 	align-items: center;
 	background-color: rgba($theme-primary-color, 0.5);
 	border-radius: 4px;
+	padding: 0 0.5rem;
 	width: 100%;
-	padding: 16px 8px;
+	font-size: 16px;
 }
 
 .paginator-button {
@@ -16,9 +17,19 @@
 	background: none;
 	border: none;
 	color: $theme-primary-text-color;
-	margin: 0;
-	padding: 0;
+	margin-left: 0.5rem;
+	padding: 1em;
+	font-size: 0.9375em;
 	cursor: pointer;
+}
+
+.paginator-button-control {
+	@extend .paginator-button;
+	padding: 1em 0.75em;
+
+	&[first] {
+		margin-left: 0;
+	}
 }
 
 .paginator-button-active {

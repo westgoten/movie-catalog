@@ -43,6 +43,24 @@ function getPosterFullPath(imagesConfig, movie) {
 
 export const removeOldMoviePosters = createAction('removeOldMoviePosters')
 
+export const setPaginatorSize = createAction(
+	'setPaginatorSize',
+	(paginatorSize, totalPages) => ({
+		payload: {
+			paginatorSize,
+			totalPages
+		}
+	})
+)
+
 export const initializePaginator = createAction('initializePaginator')
 
-export const changeCurrentPage = createAction('changeCurrentPage')
+export const changeCurrentPage = createAction(
+	'changeCurrentPage',
+	(page, totalPages) => ({
+		payload: {
+			page,
+			totalPages
+		}
+	})
+)

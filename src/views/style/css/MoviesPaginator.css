@@ -1,22 +1,31 @@
 .paginator {
   box-sizing: border-box;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   background-color: rgba(102, 5, 0, 0.5);
   border-radius: 4px;
+  padding: 0 0.5rem;
   width: 100%;
-  padding: 16px 8px;
+  font-size: 16px;
 }
 
-.paginator-button {
+.paginator-button, .paginator-button-control {
   outline: none;
   background: none;
   border: none;
   color: white;
-  margin: 0;
-  padding: 0;
+  margin-left: 0.5rem;
+  padding: 1em;
+  font-size: 0.9375em;
   cursor: pointer;
+}
+
+.paginator-button-control {
+  padding: 1em 0.75em;
+}
+.paginator-button-control[first] {
+  margin-left: 0;
 }
 
 .paginator-button-active {

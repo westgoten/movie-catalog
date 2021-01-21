@@ -2,43 +2,57 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import {
+	setPaginatorSize,
 	initializePaginator,
 	changeCurrentPage
 } from '../../actions/moviesActions'
 import getDefaultMovieFilter from '../../utils/getDefaultMovieFilter'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
+import useScreenSize from '../../utils/hooks/useScreenSize'
+import { SMALL_WIDTH } from '../../utils/consts/screenSizes'
+import { SMALL, BIG } from '../../utils/consts/paginatorSize'
+import { FIRST } from '../../utils/consts/componentAttributes'
 
 function MoviesPaginator({ pagination, match }) {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const paginator = useShallowEqualSelector((state) => state.movies.paginator)
 
+	const totalPages = pagination ? pagination.totalPages : 0
 	const movieFilter = match.params.movieFilter
 		? match.params.movieFilter
 		: getDefaultMovieFilter()
 	const page = match.params.page ? Number(match.params.page) : 1
 
-	useEffect(() => {
-		dispatch(initializePaginator())
-	}, [])
+	const isScreenSizeSmall = useScreenSize(SMALL_WIDTH)
 
 	useEffect(() => {
-		dispatch(changeCurrentPage(page))
-	}, [page])
+		dispatch(initializePaginator(totalPages))
+	}, [totalPages])
+
+	useEffect(() => {
+		const paginatorSize = isScreenSizeSmall ? SMALL : BIG
+		dispatch(setPaginatorSize(paginatorSize, totalPages))
+	}, [isScreenSizeSmall, totalPages])
+
+	useEffect(() => {
+		dispatch(changeCurrentPage(page, totalPages))
+	}, [page, totalPages])
 
 	return (
 		<div className='paginator'>
 			<button
 				className={
-					'paginator-button' +
+					'paginator-button-control' +
 					(page > 1 ? '' : ' paginator-button-disabled')
 				}
-				onClick={goToFirstPage}>
+				onClick={goToFirstPage}
+				{...FIRST}>
 				<i className='fas fa-angle-double-left'></i>
 			</button>
 			<button
 				className={
-					'paginator-button' +
+					'paginator-button-control' +
 					(page > 1 ? '' : ' paginator-button-disabled')
 				}
 				onClick={goToPreviousPage}>
@@ -47,20 +61,16 @@ function MoviesPaginator({ pagination, match }) {
 			{createPageLinks()}
 			<button
 				className={
-					'paginator-button' +
-					(page < pagination.totalPages
-						? ''
-						: ' paginator-button-disabled')
+					'paginator-button-control' +
+					(page < totalPages ? '' : ' paginator-button-disabled')
 				}
 				onClick={goToNextPage}>
 				<i className='fas fa-angle-right'></i>
 			</button>
 			<button
 				className={
-					'paginator-button' +
-					(page < pagination.totalPages
-						? ''
-						: ' paginator-button-disabled')
+					'paginator-button-control' +
+					(page < totalPages ? '' : ' paginator-button-disabled')
 				}
 				onClick={goToLastPage}>
 				<i className='fas fa-angle-double-right'></i>
@@ -77,13 +87,13 @@ function MoviesPaginator({ pagination, match }) {
 	}
 
 	function createPageLinks() {
-		const pageLinks = []
+		const pageButtons = []
 		for (
 			let pageNumber = paginator.pages[paginator.start];
 			pageNumber <= paginator.pages[paginator.end];
 			pageNumber++
 		) {
-			pageLinks.push(
+			pageButtons.push(
 				<button
 					key={pageNumber}
 					className={
@@ -97,7 +107,7 @@ function MoviesPaginator({ pagination, match }) {
 				</button>
 			)
 		}
-		return pageLinks
+		return pageButtons
 	}
 
 	function goToPage(pageNumber) {
@@ -105,13 +115,11 @@ function MoviesPaginator({ pagination, match }) {
 	}
 
 	function goToNextPage() {
-		if (page < pagination.totalPages)
-			history.push(`/${movieFilter}/${page + 1}`)
+		if (page < totalPages) history.push(`/${movieFilter}/${page + 1}`)
 	}
 
 	function goToLastPage() {
-		if (page < pagination.totalPages)
-			history.push(`/${movieFilter}/${pagination.totalPages}`)
+		if (page < totalPages) history.push(`/${movieFilter}/${totalPages}`)
 	}
 }
 
