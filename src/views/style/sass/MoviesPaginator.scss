@@ -10,6 +10,14 @@
 	padding: 0 0.5rem;
 	width: 100%;
 	font-size: 16px;
+
+	@media (max-width: $small-width) {
+		justify-content: space-evenly;
+	}
+
+	&[invisible] {
+		display: none;
+	}
 }
 
 .paginator-button {
@@ -21,19 +29,35 @@
 	padding: 1em;
 	font-size: 0.9375em;
 	cursor: pointer;
+
+	@media (max-width: $small-width) {
+		margin: 0;
+	}
+
+	@media (max-width: $very-small-width) {
+		padding: 1rem;
+	}
 }
 
 .paginator-button-control {
 	@extend .paginator-button;
-	padding: 1em 0.75em;
+	padding-left: 0.75em;
+	padding-right: 0.75em;
 
 	&[first] {
 		margin-left: 0;
+	}
+
+	@media (max-width: $very-small-width) {
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
 	}
 }
 
 .paginator-button-active {
 	color: $theme-secondary-color;
+	border: 1px solid $theme-secondary-color;
+	border-radius: 4px;
 }
 
 .paginator-button-disabled {

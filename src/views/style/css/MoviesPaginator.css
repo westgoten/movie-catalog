@@ -9,6 +9,14 @@
   width: 100%;
   font-size: 16px;
 }
+@media (max-width: 736px) {
+  .paginator {
+    justify-content: space-evenly;
+  }
+}
+.paginator[invisible] {
+  display: none;
+}
 
 .paginator-button, .paginator-button-control {
   outline: none;
@@ -20,16 +28,35 @@
   font-size: 0.9375em;
   cursor: pointer;
 }
+@media (max-width: 736px) {
+  .paginator-button, .paginator-button-control {
+    margin: 0;
+  }
+}
+@media (max-width: 360px) {
+  .paginator-button, .paginator-button-control {
+    padding: 1rem;
+  }
+}
 
 .paginator-button-control {
-  padding: 1em 0.75em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
 }
 .paginator-button-control[first] {
   margin-left: 0;
 }
+@media (max-width: 360px) {
+  .paginator-button-control {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
 
 .paginator-button-active {
   color: orange;
+  border: 1px solid orange;
+  border-radius: 4px;
 }
 
 .paginator-button-disabled {

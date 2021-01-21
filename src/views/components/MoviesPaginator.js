@@ -9,11 +9,11 @@ import {
 import getDefaultMovieFilter from '../../utils/getDefaultMovieFilter'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import useScreenSize from '../../utils/hooks/useScreenSize'
-import { SMALL_WIDTH } from '../../utils/consts/screenSizes'
-import { SMALL, BIG } from '../../utils/consts/paginatorSize'
-import { FIRST } from '../../utils/consts/componentAttributes'
+import { VERY_SMALL_WIDTH, SMALL_WIDTH } from '../../utils/consts/screenSizes'
+import { VERY_SMALL, SMALL, BIG } from '../../utils/consts/paginatorSize'
+import { FIRST, INVISIBLE, NONE } from '../../utils/consts/componentAttributes'
 
-function MoviesPaginator({ pagination, match }) {
+function MoviesPaginator({ pagination, match, isInvisible }) {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const paginator = useShallowEqualSelector((state) => state.movies.paginator)
@@ -24,6 +24,7 @@ function MoviesPaginator({ pagination, match }) {
 		: getDefaultMovieFilter()
 	const page = match.params.page ? Number(match.params.page) : 1
 
+	const isScreenSizeVerySmall = useScreenSize(VERY_SMALL_WIDTH)
 	const isScreenSizeSmall = useScreenSize(SMALL_WIDTH)
 
 	useEffect(() => {
@@ -31,16 +32,20 @@ function MoviesPaginator({ pagination, match }) {
 	}, [totalPages])
 
 	useEffect(() => {
-		const paginatorSize = isScreenSizeSmall ? SMALL : BIG
+		const paginatorSize = isScreenSizeVerySmall
+			? VERY_SMALL
+			: isScreenSizeSmall
+			? SMALL
+			: BIG
 		dispatch(setPaginatorSize(paginatorSize, totalPages))
-	}, [isScreenSizeSmall, totalPages])
+	}, [isScreenSizeVerySmall, isScreenSizeSmall, totalPages])
 
 	useEffect(() => {
 		dispatch(changeCurrentPage(page, totalPages))
 	}, [page, totalPages])
 
 	return (
-		<div className='paginator'>
+		<div className='paginator' {...(isInvisible ? INVISIBLE : NONE)}>
 			<button
 				className={
 					'paginator-button-control' +

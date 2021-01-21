@@ -57,18 +57,34 @@ function MoviesPage() {
 	return isPathValid() ? (
 		<div className='movies-page'>
 			<MoviesTabs />
-			{areMoviesPending || isConfigurationPending ? (
+			{isLoading() ? (
 				<Loader />
-			) : requestError || !movieList || movieList.length === 0 ? (
+			) : hasRequestError() ? (
 				<></>
 			) : (
 				<MoviesGrid movieList={movieList} />
 			)}
-			<MoviesPaginator pagination={pagination} match={match} />
+			<MoviesPaginator
+				pagination={pagination}
+				match={match}
+				isInvisible={isPaginatorInvisible()}
+			/>
 		</div>
 	) : (
 		<PageNotFound />
 	)
+
+	function isLoading() {
+		return areMoviesPending || isConfigurationPending
+	}
+
+	function hasRequestError() {
+		return requestError || !movieList || movieList.length === 0
+	}
+
+	function isPaginatorInvisible() {
+		return isLoading() || hasRequestError()
+	}
 }
 
 export default MoviesPage
