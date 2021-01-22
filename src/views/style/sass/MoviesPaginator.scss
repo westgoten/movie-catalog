@@ -30,6 +30,13 @@
 	font-size: 0.9375em;
 	cursor: pointer;
 
+	@media (hover: hover) {
+		&:not(.paginator-button-disabled):not(.paginator-button-active):hover {
+			background-color: rgba(gray, 0.3);
+			border-radius: 4px;
+		}
+	}
+
 	@media (max-width: $small-width) {
 		margin: 0;
 	}
@@ -41,11 +48,14 @@
 
 .paginator-button-control {
 	@extend .paginator-button;
-	padding-left: 0.75em;
-	padding-right: 0.75em;
 
 	&[first] {
 		margin-left: 0;
+	}
+
+	@media (max-width: $small-width) {
+		padding-left: 0.75em;
+		padding-right: 0.75em;
 	}
 
 	@media (max-width: $very-small-width) {

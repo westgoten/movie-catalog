@@ -296,15 +296,11 @@
   background-color: gray;
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
+  font-size: 16px;
 }
 
 .movies-card-image-placeholder-icon {
-  font-size: 28px;
-}
-
-.movies-card-image-placeholder-text {
-  text-transform: uppercase;
-  font-size: 16px;
+  font-size: 5.5em;
 }
 
 .movies-card-overview {
@@ -402,6 +398,12 @@
   font-size: 0.9375em;
   cursor: pointer;
 }
+@media (hover: hover) {
+  .paginator-button:not(.paginator-button-disabled):not(.paginator-button-active):hover, .paginator-button-control:not(.paginator-button-disabled):not(.paginator-button-active):hover {
+    background-color: rgba(128, 128, 128, 0.3);
+    border-radius: 4px;
+  }
+}
 @media (max-width: 736px) {
   .paginator-button, .paginator-button-control {
     margin: 0;
@@ -413,12 +415,14 @@
   }
 }
 
-.paginator-button-control {
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
 .paginator-button-control[first] {
   margin-left: 0;
+}
+@media (max-width: 736px) {
+  .paginator-button-control {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+  }
 }
 @media (max-width: 360px) {
   .paginator-button-control {

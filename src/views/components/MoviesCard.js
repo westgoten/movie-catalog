@@ -24,10 +24,7 @@ function MoviesCard({ movie }) {
 					/>
 				) : (
 					<div className='movies-card-image-placeholder'>
-						<i className='fas fa-exclamation-triangle movies-card-image-placeholder-icon'></i>
-						<p className='movies-card-image-placeholder-text'>
-							No image
-						</p>
+						<i className='fas fa-image movies-card-image-placeholder-icon'></i>
 					</div>
 				)}
 			</Link>
