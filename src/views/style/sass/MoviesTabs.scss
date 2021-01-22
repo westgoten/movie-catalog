@@ -2,7 +2,7 @@
 
 $tab-border-width: 1px;
 $tab-border-radius: 4px;
-$tab-border-color: darken(white, 15);
+$tab-border-color: rgba($theme-primary-text-color, 0.25);
 $tab-container-margin-bottom: 3.375rem;
 
 .tab-container {
@@ -11,6 +11,10 @@ $tab-container-margin-bottom: 3.375rem;
 	margin-top: 1rem;
 	margin-bottom: $tab-container-margin-bottom;
 	font-size: 16px;
+
+	@media (max-width: $very-small-width) {
+		align-self: center;
+	}
 }
 
 .tab {
@@ -40,4 +44,9 @@ $tab-container-margin-bottom: 3.375rem;
 
 .tab-selected {
 	background-color: lighten($theme-primary-color, 12);
+	border-right: 1px solid $tab-border-color;
+
+	& + .tab {
+		border-left: none;
+	}
 }

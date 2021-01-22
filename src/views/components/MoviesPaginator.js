@@ -11,7 +11,7 @@ import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import useScreenSize from '../../utils/hooks/useScreenSize'
 import { VERY_SMALL_WIDTH, SMALL_WIDTH } from '../../utils/consts/screenSizes'
 import { VERY_SMALL, SMALL, BIG } from '../../utils/consts/paginatorSize'
-import { FIRST, INVISIBLE, NONE } from '../../utils/consts/componentAttributes'
+import { INVISIBLE, NONE } from '../../utils/consts/componentAttributes'
 
 function MoviesPaginator({ pagination, match, isInvisible }) {
 	const dispatch = useDispatch()
@@ -51,8 +51,7 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 					'paginator-button-control' +
 					(page > 1 ? '' : ' paginator-button-disabled')
 				}
-				onClick={goToFirstPage}
-				{...FIRST}>
+				onClick={goToFirstPage}>
 				<i className='fas fa-angle-double-left'></i>
 			</button>
 			<button

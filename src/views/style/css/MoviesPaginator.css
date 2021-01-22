@@ -45,7 +45,7 @@
   }
 }
 
-.paginator-button-control[first] {
+.paginator-button-control:first-child, .paginator-button-control:nth-child(2), .paginator-button-control:last-child {
   margin-left: 0;
 }
 @media (max-width: 736px) {
