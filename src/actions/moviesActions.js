@@ -1,6 +1,8 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getMovies } from '../api/apiMovieDB'
 import fetchImage from '../api/fetchImage'
+import { fetchConfiguration } from './configurationActions'
+import { fetchGenres } from './genresActions'
 import getDefaultMovieFilter from '../utils/getDefaultMovieFilter'
 import handleRequestError from '../utils/handleRequestError'
 import { ORIGINAL_SIZE, POSTER_SIZE } from '../utils/consts/imageSizes'
@@ -10,11 +12,15 @@ export const fetchMoviesByFilter = createAsyncThunk(
 	'fetchMoviesByFilter',
 	async (
 		{ imagesConfig, filter = getDefaultMovieFilter(), page = 1 },
-		{ rejectWithValue }
+		{ rejectWithValue, dispatch }
 	) => {
 		try {
 			const response = await getMovies(filter, page)
 			if (imagesConfig) await addImages(imagesConfig, response)
+			else {
+				dispatch(fetchConfiguration())
+				dispatch(fetchGenres())
+			}
 			return response.data
 		} catch (err) {
 			return handleRequestError(err, rejectWithValue)

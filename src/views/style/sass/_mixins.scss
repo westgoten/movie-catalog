@@ -1,0 +1,10 @@
+@use 'consts' as *;
+
+@mixin link($link-color) {
+	text-decoration: none;
+	color: $link-color;
+}
+
+@mixin reset-link {
+	@include link($theme-primary-text-color);
+}

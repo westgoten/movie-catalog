@@ -8,16 +8,16 @@ import APIConfiguration from '../models/APIConfiguration'
 
 const dataHandlers = {
 	prepareMovies: (data) => {
-		if (data.status_message === undefined)
+		if (!data.status_message && !data.errors)
 			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareMovieDetails: (data) => {
-		if (data.status_message === undefined) return new MovieDetails(data)
+		if (!data.status_message && !data.errors) return new MovieDetails(data)
 		return data
 	},
 	prepareCredits: (data) => {
-		if (data.status_message === undefined) {
+		if (!data.status_message && !data.errors) {
 			const credits = new Credits(data)
 			credits.crew = credits.getDirectorAndScreenplay()
 			return credits
@@ -25,16 +25,16 @@ const dataHandlers = {
 		return data
 	},
 	prepareImages: (data) => {
-		if (data.status_message === undefined) return new ImageLists(data)
+		if (!data.status_message && !data.errors) return new ImageLists(data)
 		return data
 	},
 	prepareRecommendations: (data) => {
-		if (data.status_message === undefined)
+		if (!data.status_message && !data.errors)
 			return new MovieList(data).toPOJO()
 		return data
 	},
 	prepareVideos: (data) => {
-		if (data.status_message === undefined) {
+		if (!data.status_message && !data.errors) {
 			const videoList = new VideoList(data)
 			videoList.generateVideosPaths()
 			return videoList
@@ -42,17 +42,17 @@ const dataHandlers = {
 		return data
 	},
 	prepareGenres: (data) => {
-		if (data.status_message === undefined)
+		if (!data.status_message && !data.errors)
 			return new GenreList(data).toPOJO()
 		return data
 	},
 	prepareConfiguration: (data) => {
-		if (data.status_message === undefined)
+		if (!data.status_message && !data.errors)
 			return new APIConfiguration(data).toPOJO()
 		return data
 	},
 	prepareSearch: (data) => {
-		if (data.status_message === undefined)
+		if (!data.status_message && !data.errors)
 			return new MovieList(data).toPOJO()
 		return data
 	}

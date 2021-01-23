@@ -57,13 +57,15 @@ function MoviesPage() {
 
 	return isPathValid() ? (
 		<div className='movies-page'>
-			<MoviesTabs />
 			{isLoading() ? (
 				<Loader />
 			) : hasRequestError() ? (
 				<ErrorWarning requestError={requestError} />
 			) : (
-				<MoviesGrid movieList={movieList} />
+				<>
+					<MoviesTabs />
+					<MoviesGrid movieList={movieList} />
+				</>
 			)}
 			<MoviesPaginator
 				pagination={pagination}

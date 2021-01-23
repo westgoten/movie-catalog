@@ -13,6 +13,7 @@
 @use 'SearchBar';
 @use 'SideNavbar';
 @use 'TopNavbar';
+@use 'Warning';
 
 :root {
 	--page-background: #{radial-gradient(

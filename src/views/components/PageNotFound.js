@@ -1,5 +1,7 @@
+import Warning from './Warning'
+
 function PageNotFound() {
-	return <h1>Page Not Found (404)</h1>
+	return <Warning message='Page not found.' />
 }
 
 export default PageNotFound
