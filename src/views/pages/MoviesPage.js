@@ -2,10 +2,7 @@ import { useRouteMatch } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import {
-	fetchMoviesByFilter,
-	removeOldMoviePosters
-} from '../../actions/moviesActions'
+import { fetchMoviesByFilter } from '../../actions/moviesActions'
 import MoviesTabs from '../components/MoviesTabs'
 import MoviesGrid from '../components/MoviesGrid'
 import MoviesPaginator from '../components/MoviesPaginator'
@@ -29,6 +26,9 @@ function MoviesPage() {
 		(state) => state.movies.requestError
 	)
 
+	const imagesConfig = useShallowEqualSelector(
+		(state) => state.configuration.imagesConfig
+	)
 	const isConfigurationPending = useShallowEqualSelector(
 		(state) => state.configuration.isRequestPending
 	)
@@ -45,10 +45,11 @@ function MoviesPage() {
 
 	useEffect(() => {
 		if (isPathValid() && !isConfigurationPending) {
-			dispatch(removeOldMoviePosters())
-			dispatch(fetchMoviesByFilter({ filter: movieFilter, page }))
+			dispatch(
+				fetchMoviesByFilter({ imagesConfig, filter: movieFilter, page })
+			)
 		}
-	}, [movieFilter, page, isPathValid, isConfigurationPending])
+	}, [movieFilter, page, isPathValid, isConfigurationPending, imagesConfig])
 
 	return isPathValid() ? (
 		<div className='movies-page'>

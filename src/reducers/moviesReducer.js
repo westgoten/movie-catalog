@@ -1,7 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
 	fetchMoviesByFilter,
-	removeOldMoviePosters,
 	setPaginatorSize,
 	initializePaginator,
 	changeCurrentPage
@@ -44,18 +43,6 @@ const moviesReducer = createReducer(
 			isRequestPending: false,
 			requestError: action.payload
 		}),
-		[removeOldMoviePosters]: (state) => {
-			if (state.movieList.length > 0) {
-				return {
-					...state,
-					movieList: state.movieList.map((movie) => {
-						URL.revokeObjectURL(movie.posterFullPath)
-						return { ...movie, posterFullPath: null }
-					})
-				}
-			}
-			return state
-		},
 		[setPaginatorSize]: (state, action) => {
 			console.log('setPaginatorSize: ', action.payload)
 			const totalPages = action.payload.totalPages

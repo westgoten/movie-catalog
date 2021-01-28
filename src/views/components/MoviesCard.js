@@ -8,6 +8,7 @@ import {
 } from '../../utils/consts/componentAttributes'
 import { NO_RATING } from '../../utils/consts/movieRating'
 import { POSTER_SIZE, ORIGINAL_SIZE } from '../../utils/consts/imageSizes'
+import intersectionObserver from '../../utils/intersectionObserver'
 
 function MoviesCard({ movie }) {
 	const imageRef = useRef(null)
@@ -23,9 +24,8 @@ function MoviesCard({ movie }) {
 	useEffect(() => {
 		const image = imageRef.current
 		if (image) {
-			const observer = createObserver()
-			observer.observe(image)
-			return () => observer.disconnect()
+			intersectionObserver.observe(image)
+			return () => intersectionObserver.unobserve(image)
 		}
 	}, [])
 
@@ -90,21 +90,12 @@ function MoviesCard({ movie }) {
 	}
 
 	function getPosterFullPath(movie) {
-		if (imagesConfig.posterSizes.includes(POSTER_SIZE))
-			return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
-		return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
+		if (imagesConfig) {
+			if (imagesConfig.posterSizes.includes(POSTER_SIZE))
+				return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
+			return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
+		}
 	}
-}
-
-function createObserver() {
-	return new IntersectionObserver((entries, observer) => {
-		entries.forEach((entry) => {
-			if (entry.isIntersecting) {
-				entry.target.setAttribute('src', entry.target.dataset.src)
-				observer.unobserve(entry.target)
-			}
-		})
-	})
 }
 
 export default MoviesCard
