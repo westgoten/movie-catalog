@@ -29,9 +29,6 @@ function MoviesPage() {
 		(state) => state.movies.requestError
 	)
 
-	const imagesConfig = useShallowEqualSelector(
-		(state) => state.configuration.imagesConfig
-	)
 	const isConfigurationPending = useShallowEqualSelector(
 		(state) => state.configuration.isRequestPending
 	)
@@ -49,11 +46,9 @@ function MoviesPage() {
 	useEffect(() => {
 		if (isPathValid() && !isConfigurationPending) {
 			dispatch(removeOldMoviePosters())
-			dispatch(
-				fetchMoviesByFilter({ imagesConfig, filter: movieFilter, page })
-			)
+			dispatch(fetchMoviesByFilter({ filter: movieFilter, page }))
 		}
-	}, [movieFilter, page, isPathValid, isConfigurationPending, imagesConfig])
+	}, [movieFilter, page, isPathValid, isConfigurationPending])
 
 	return isPathValid() ? (
 		<div className='movies-page'>

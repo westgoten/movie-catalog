@@ -16,36 +16,17 @@ export const fetchMoviesByFilter = createAsyncThunk(
 	) => {
 		try {
 			const response = await getMovies(filter, page)
-			if (imagesConfig) await addImages(imagesConfig, response)
-			else {
-				dispatch(fetchConfiguration())
-				dispatch(fetchGenres())
-			}
+			// if (imagesConfig) await addImages(imagesConfig, response)
+			// else {
+			// 	dispatch(fetchConfiguration())
+			// 	dispatch(fetchGenres())
+			// }
 			return response.data
 		} catch (err) {
 			return handleRequestError(err, rejectWithValue)
 		}
 	}
 )
-
-async function addImages(imagesConfig, response) {
-	const movieList = response.data.results
-	const imagesPromises = movieList.map((movie) =>
-		fetchImage(getPosterFullPath(imagesConfig, movie))
-	)
-	const imagesOutputs = await Promise.allSettled(imagesPromises)
-	movieList.forEach((movie, index) => {
-		const imageOutput = imagesOutputs[index]
-		if (imageOutput.status === FULFILLED)
-			movie.posterFullPath = URL.createObjectURL(imageOutput.value.data)
-	})
-}
-
-function getPosterFullPath(imagesConfig, movie) {
-	if (imagesConfig.posterSizes.includes(POSTER_SIZE))
-		return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
-	return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
-}
 
 export const removeOldMoviePosters = createAction('removeOldMoviePosters')
 

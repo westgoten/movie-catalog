@@ -29,7 +29,7 @@
 
 	@media (hover: hover) {
 		&:hover {
-			color: yellow;
+			color: $theme-accent-color;
 		}
 	}
 }

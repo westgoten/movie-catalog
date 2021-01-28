@@ -1,32 +1,51 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
+import {
+	VISIBLE,
+	INVISIBLE,
+	NONE
+} from '../../utils/consts/componentAttributes'
 import { NO_RATING } from '../../utils/consts/movieRating'
+import { POSTER_SIZE, ORIGINAL_SIZE } from '../../utils/consts/imageSizes'
 
 function MoviesCard({ movie }) {
-	const [hasFullyLoaded, setFullyLoaded] = useState(false)
+	const imageRef = useRef(null)
+	const [hasImage, setHasImage] = useState(false)
+	const [hasFullyLoaded, setHasFullyLoaded] = useState(false)
+
+	const imagesConfig = useShallowEqualSelector(
+		(state) => state.configuration.imagesConfig
+	)
+
 	const genreList = useShallowEqualSelector((state) => state.genres.genreList)
 
 	useEffect(() => {
-		if (!movie.posterFullPath) setFullyLoaded(true)
-	}, [movie.posterFullPath])
+		const image = imageRef.current
+		if (image) {
+			const observer = createObserver()
+			observer.observe(image)
+			return () => observer.disconnect()
+		}
+	}, [])
 
 	return (
 		<div className='movies-card' {...(hasFullyLoaded ? VISIBLE : NONE)}>
 			<Link to='/' className='movies-card-image-link'>
-				{movie.posterFullPath ? (
-					<img
-						src={movie.posterFullPath}
-						alt='Movie poster'
-						className='movies-card-image'
-						onLoad={handleImageOnLoad}
-					/>
-				) : (
-					<div className='movies-card-image-placeholder'>
-						<i className='fas fa-image movies-card-image-placeholder-icon'></i>
-					</div>
-				)}
+				<img
+					ref={imageRef}
+					data-src={getPosterFullPath(movie)}
+					alt='Movie poster'
+					className='movies-card-image'
+					onLoad={handleImageOnLoad}
+					onError={handleImageOnError}
+					{...(hasImage ? VISIBLE : NONE)}
+				/>
+				<div
+					className='movies-card-image-placeholder'
+					{...(hasImage ? INVISIBLE : NONE)}>
+					<i className='fas fa-image movies-card-image-placeholder-icon'></i>
+				</div>
 			</Link>
 			<div className='movies-card-overview'>
 				<span className='movies-card-name'>
@@ -49,7 +68,13 @@ function MoviesCard({ movie }) {
 	)
 
 	function handleImageOnLoad() {
-		setFullyLoaded(true)
+		setHasFullyLoaded(true)
+		setHasImage(true)
+	}
+
+	function handleImageOnError() {
+		setHasFullyLoaded(true)
+		setHasImage(false)
 	}
 
 	function getMovieGenreNameList() {
@@ -63,6 +88,23 @@ function MoviesCard({ movie }) {
 			.map((genre) => genre.name)
 			.join(', ')
 	}
+
+	function getPosterFullPath(movie) {
+		if (imagesConfig.posterSizes.includes(POSTER_SIZE))
+			return imagesConfig.baseUrl + POSTER_SIZE + movie.posterPath
+		return imagesConfig.baseUrl + ORIGINAL_SIZE + movie.posterPath
+	}
+}
+
+function createObserver() {
+	return new IntersectionObserver((entries, observer) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				entry.target.setAttribute('src', entry.target.dataset.src)
+				observer.unobserve(entry.target)
+			}
+		})
+	})
 }
 
 export default MoviesCard

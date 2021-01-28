@@ -14,17 +14,12 @@
   margin: 0.3em;
 }
 
-.link {
+.footer-link {
   text-decoration: none;
-}
-.link:link {
-  color: orange;
-}
-.link:visited {
   color: orange;
 }
 @media (hover: hover) {
-  .link:hover {
+  .footer-link:hover {
     color: yellow;
   }
 }

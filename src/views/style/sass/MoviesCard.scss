@@ -1,4 +1,5 @@
 @use 'consts' as *;
+@use 'mixins';
 
 $card-border-radius: 4px;
 $card-overview-padding-vertical: 24px;
@@ -29,13 +30,11 @@ $rating-border-size: 30px;
 }
 
 .movies-card-link {
-	text-decoration: none;
-	outline: none;
-	color: $theme-primary-text-color;
+	@include mixins.reset-link;
 }
 
 .movies-card-image-link {
-	@extend .movies-card-link;
+	@include mixins.reset-link;
 	position: relative;
 	height: 0;
 	overflow: hidden;
@@ -50,6 +49,11 @@ $rating-border-size: 30px;
 	height: 100%;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
+	opacity: 0;
+
+	&[visible] {
+		opacity: 1;
+	}
 }
 
 .movies-card-image-placeholder {
@@ -66,6 +70,11 @@ $rating-border-size: 30px;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
 	font-size: 16px;
+	opacity: 1;
+
+	&[invisible] {
+		opacity: 0;
+	}
 }
 
 .movies-card-image-placeholder-icon {

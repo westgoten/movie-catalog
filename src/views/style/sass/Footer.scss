@@ -1,6 +1,5 @@
 @use 'consts' as *;
-
-$link-color: $theme-secondary-color;
+@use 'mixins';
 
 .footer {
 	width: 100%;
@@ -18,20 +17,12 @@ $link-color: $theme-secondary-color;
 	margin: 0.3em;
 }
 
-.link {
-	text-decoration: none;
-
-	&:link {
-		color: $link-color;
-	}
-
-	&:visited {
-		color: $link-color;
-	}
+.footer-link {
+	@include mixins.link($theme-secondary-color);
 
 	@media (hover: hover) {
 		&:hover {
-			color: yellow;
+			color: $theme-accent-color;
 		}
 	}
 }
