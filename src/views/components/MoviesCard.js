@@ -1,11 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import {
-	VISIBLE,
-	INVISIBLE,
-	NONE
-} from '../../utils/consts/componentAttributes'
+import Loader from './Loader'
+import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
 import { NO_RATING } from '../../utils/consts/movieRating'
 import { POSTER_SIZE, ORIGINAL_SIZE } from '../../utils/consts/imageSizes'
 import intersectionObserver from '../../utils/intersectionObserver'
@@ -30,8 +27,11 @@ function MoviesCard({ movie }) {
 	}, [])
 
 	return (
-		<div className='movies-card' {...(hasFullyLoaded ? VISIBLE : NONE)}>
+		<div className='movies-card'>
 			<Link to='/' className='movies-card-image-link'>
+				{hasFullyLoaded ? null : (
+					<Loader className='movies-card-loader' />
+				)}
 				<img
 					ref={imageRef}
 					data-src={getPosterFullPath(movie)}
@@ -39,11 +39,11 @@ function MoviesCard({ movie }) {
 					className='movies-card-image'
 					onLoad={handleImageOnLoad}
 					onError={handleImageOnError}
-					{...(hasImage ? VISIBLE : NONE)}
+					{...(hasFullyLoaded ? (hasImage ? VISIBLE : NONE) : NONE)}
 				/>
 				<div
 					className='movies-card-image-placeholder'
-					{...(hasImage ? INVISIBLE : NONE)}>
+					{...(hasFullyLoaded ? (hasImage ? NONE : VISIBLE) : NONE)}>
 					<i className='fas fa-image movies-card-image-placeholder-icon'></i>
 				</div>
 			</Link>

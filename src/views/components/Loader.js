@@ -1,6 +1,7 @@
-function Loader() {
+function Loader({ className }) {
 	return (
-		<div className='loader-container'>
+		<div
+			className={'loader-container' + (className ? ' ' + className : '')}>
 			<div className='loader'></div>
 		</div>
 	)

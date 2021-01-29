@@ -14,18 +14,13 @@ $rating-border-size: 30px;
 	max-width: 300px;
 	justify-self: center;
 	background-color: $theme-primary-color;
-	opacity: 0;
 	transform: translateY(0px);
-	transition: opacity 0.5s, transform 0.1s ease-out;
+	transition: transform 0.1s ease-out;
 
 	@media (hover: hover) {
 		&:hover {
 			transform: translateY(-16px);
 		}
-	}
-
-	&[visible] {
-		opacity: 1;
 	}
 }
 
@@ -39,6 +34,14 @@ $rating-border-size: 30px;
 	height: 0;
 	overflow: hidden;
 	padding-top: $poster-aspect-ratio * 100%;
+}
+
+.movies-card-loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .movies-card-image {
@@ -70,10 +73,10 @@ $rating-border-size: 30px;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
 	font-size: 16px;
-	opacity: 1;
+	opacity: 0;
 
-	&[invisible] {
-		opacity: 0;
+	&[visible] {
+		opacity: 1;
 	}
 }
 
