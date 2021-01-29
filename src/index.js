@@ -7,7 +7,6 @@ import store from './store'
 import reportWebVitals from './utils/reportWebVitals'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import './views/style/css/index.css'
-import 'allsettled-polyfill'
 
 ReactDOM.render(
 	<React.StrictMode>
