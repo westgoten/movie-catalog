@@ -1,4 +1,5 @@
 .tab-container {
+  max-width: 95%;
   display: inline-flex;
   align-items: center;
   margin-top: 1rem;
@@ -12,17 +13,20 @@
 }
 
 .tab {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-right: none;
   color: white;
   background-color: transparent;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   transition: 0.1s;
   cursor: pointer;
 }
 @media (max-width: 736px) {
   .tab {
-    font-size: 0.7em;
+    font-size: 0.75em;
   }
 }
 .tab:first-child {

@@ -6,6 +6,7 @@ $tab-border-color: rgba($theme-primary-text-color, 0.25);
 $tab-container-margin-bottom: 3.375rem;
 
 .tab-container {
+	max-width: 95%;
 	display: inline-flex;
 	align-items: center;
 	margin-top: 1rem;
@@ -18,16 +19,19 @@ $tab-container-margin-bottom: 3.375rem;
 }
 
 .tab {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	border: 1px solid $tab-border-color;
 	border-right: none;
 	color: $theme-primary-text-color;
 	background-color: transparent;
-	padding: 8px 12px;
+	padding: 0.5rem 0.75rem;
 	transition: 0.1s;
 	cursor: pointer;
 
 	@media (max-width: $small-width) {
-		font-size: 0.7em;
+		font-size: 0.75em;
 	}
 
 	&:first-child {
