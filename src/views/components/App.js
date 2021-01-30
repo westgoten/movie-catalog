@@ -39,6 +39,15 @@ function App() {
 					<Route exact path='/:movieFilter/:page'>
 						<MoviesPage />
 					</Route>
+					<Route exact path='/search'>
+						<MoviesRedirect />
+					</Route>
+					<Route exact path='/search/:query'>
+						<MoviesRedirect />
+					</Route>
+					<Route exact path='/search/:query/:page'>
+						<MoviesPage />
+					</Route>
 					<Route>
 						<PageNotFound />
 					</Route>
