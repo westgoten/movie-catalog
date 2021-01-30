@@ -8,13 +8,18 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	font-size: 0.85em;
 	padding: $page-padding-y $page-padding-x;
 	background-color: $theme-primary-color;
+	font-size: $base-font-size;
 }
 
 .footer-text {
 	margin: 0.3em;
+	font-size: 0.8125em;
+
+	@media (max-width: $small-width) {
+		font-size: 0.75em;
+	}
 }
 
 .footer-link {

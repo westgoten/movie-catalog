@@ -12,6 +12,7 @@
 @media (max-width: 736px) {
   .paginator {
     justify-content: space-evenly;
+    margin-bottom: 1rem;
   }
 }
 .paginator[invisible] {

@@ -8,6 +8,7 @@
   background-color: #660500;
   transform: translateY(0px);
   transition: transform 0.1s ease-out;
+  animation: fadeIn 1.5s forwards;
 }
 @media (hover: hover) {
   .movies-card:hover {
@@ -15,6 +16,14 @@
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .movies-card-link {
   text-decoration: none;
   color: white;

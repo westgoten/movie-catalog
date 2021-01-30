@@ -16,11 +16,21 @@ $rating-border-size: 30px;
 	background-color: $theme-primary-color;
 	transform: translateY(0px);
 	transition: transform 0.1s ease-out;
+	animation: fadeIn 1.5s forwards;
 
 	@media (hover: hover) {
 		&:hover {
 			transform: translateY(-16px);
 		}
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
 	}
 }
 
@@ -72,7 +82,7 @@ $rating-border-size: 30px;
 	background-color: gray;
 	border-top-right-radius: $card-border-radius;
 	border-top-left-radius: $card-border-radius;
-	font-size: 16px;
+	font-size: $base-font-size;
 	opacity: 0;
 
 	&[visible] {
