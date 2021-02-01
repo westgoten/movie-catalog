@@ -43,3 +43,8 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   letter-spacing: -0.07em;
 }
+
+.header-placeholder {
+  min-height: 5.68rem;
+  width: 100%;
+}

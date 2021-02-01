@@ -44,6 +44,11 @@
   letter-spacing: -0.07em;
 }
 
+.header-placeholder {
+  min-height: 5.68rem;
+  width: 100%;
+}
+
 .side-navbar-menu-icon {
   font-size: 20px;
   cursor: pointer;

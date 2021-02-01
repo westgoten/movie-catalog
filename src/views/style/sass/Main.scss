@@ -1,0 +1,14 @@
+@use 'consts' as *;
+
+.main {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	padding: ($page-padding-y + 1) $page-padding-x;
+	width: 100%;
+	box-sizing: border-box;
+
+	@media (max-width: $small-width) {
+		padding: (($page-padding-y / 2) + 1) ($page-padding-x / 3);
+	}
+}

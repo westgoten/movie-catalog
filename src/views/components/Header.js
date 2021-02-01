@@ -39,14 +39,19 @@ function Header() {
 	})
 
 	return (
-		<header className='header' {...(isHeaderVisible ? NONE : INVISIBLE)}>
-			<Link to='/' className='logo'>
-				<i className='fas fa-film logo-icon'></i>
-				<span className='logo-text'>Movie Catalog</span>
-			</Link>
-			{isScreenSizeSmall ? <MobileSearchBar /> : <SearchBar />}
-			<TopNavbar />
-		</header>
+		<>
+			<header
+				className='header'
+				{...(isHeaderVisible ? NONE : INVISIBLE)}>
+				<Link to='/' className='logo'>
+					<i className='fas fa-film logo-icon'></i>
+					<span className='logo-text'>Movie Catalog</span>
+				</Link>
+				{isScreenSizeSmall ? <MobileSearchBar /> : <SearchBar />}
+				<TopNavbar />
+			</header>
+			<div className='header-placeholder'></div>
+		</>
 	)
 }
 
