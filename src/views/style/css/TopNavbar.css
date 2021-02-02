@@ -3,7 +3,7 @@
   align-items: center;
   margin-left: auto;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .top-navbar {
     margin-left: 0;
   }

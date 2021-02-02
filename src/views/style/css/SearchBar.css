@@ -9,6 +9,7 @@
   border-radius: 6px;
   box-sizing: border-box;
   border: 1px solid gray;
+  font-size: 16px;
   background-color: orange;
   transition: all 0.2s ease-out;
   cursor: text;
@@ -26,9 +27,19 @@
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
   padding-left: 0.75em;
+  color: black;
   background-color: transparent;
   font-size: 0.95em;
   outline: none;
+}
+@media (max-width: 970px) {
+  .search-input {
+    font-size: 0.875em;
+  }
+}
+.search-input::-ms-input-placeholder, .search-input::placeholder {
+  opacity: 0.7;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .search-input::-ms-clear {
   display: none;

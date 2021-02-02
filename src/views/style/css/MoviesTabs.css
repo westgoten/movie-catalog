@@ -24,7 +24,7 @@
   transition: 0.1s;
   cursor: pointer;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .tab {
     font-size: 0.75em;
   }

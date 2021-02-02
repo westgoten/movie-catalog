@@ -14,7 +14,7 @@
   margin: 0.3em;
   font-size: 0.8125em;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .footer-text {
     font-size: 0.75em;
   }

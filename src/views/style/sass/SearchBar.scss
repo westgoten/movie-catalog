@@ -14,6 +14,7 @@ $padding: 0.75em;
 	border-radius: $border-radius;
 	box-sizing: border-box;
 	border: 1px solid gray;
+	font-size: $base-font-size;
 	background-color: $theme-secondary-color;
 	transition: all 0.2s ease-out;
 	cursor: text;
@@ -31,9 +32,20 @@ $padding: 0.75em;
 	border-top-left-radius: $border-radius;
 	border-bottom-left-radius: $border-radius;
 	padding-left: $padding;
+	color: $theme-secondary-text-color;
 	background-color: transparent;
 	font-size: 0.95em;
 	outline: none;
+
+	@media (max-width: $medium-width) {
+		font-size: 0.875em;
+	}
+
+	&::-ms-input-placeholder,
+	&::placeholder {
+		opacity: 0.7;
+		font-family: Arial, Helvetica, sans-serif;
+	}
 
 	&::-ms-clear {
 		display: none;

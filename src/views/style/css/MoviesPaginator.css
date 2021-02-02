@@ -9,7 +9,7 @@
   width: 100%;
   font-size: 16px;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .paginator {
     justify-content: space-evenly;
     margin-bottom: 1rem;
@@ -35,7 +35,7 @@
     border-radius: 4px;
   }
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .paginator-button, .paginator-button-control {
     margin: 0;
   }
@@ -49,7 +49,7 @@
 .paginator-button-control:first-child, .paginator-button-control:nth-child(2), .paginator-button-control:last-child {
   margin-left: 0;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .paginator-button-control {
     padding-left: 0.75em;
     padding-right: 0.75em;

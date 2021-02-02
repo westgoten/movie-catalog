@@ -124,7 +124,7 @@
   font-size: 14px;
   font-weight: bold;
 }
-@media (max-width: 736px) {
+@media (max-width: 780px) {
   .movies-card-rating {
     font-size: 13px;
   }
