@@ -15,12 +15,6 @@ function Routes() {
 			<Route exact path='/watchlist'>
 				<Link to='/'>Watchlist page placeholder</Link>
 			</Route>
-			<Route exact path='/:movieFilter'>
-				<MoviesRedirect />
-			</Route>
-			<Route exact path='/:movieFilter/:page'>
-				<MoviesPage />
-			</Route>
 			<Route exact path='/search'>
 				<MoviesRedirect />
 			</Route>
@@ -28,6 +22,12 @@ function Routes() {
 				<MoviesRedirect />
 			</Route>
 			<Route exact path='/search/:query/:page'>
+				<MoviesPage />
+			</Route>
+			<Route exact path='/:movieFilter'>
+				<MoviesRedirect />
+			</Route>
+			<Route exact path='/:movieFilter/:page'>
 				<MoviesPage />
 			</Route>
 			<Route path='*'>

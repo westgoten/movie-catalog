@@ -1,6 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { SEARCH_PATH } from '../../utils/consts/routePaths'
 
 function SearchBar() {
+	const history = useHistory()
+
 	const [isSearchOpen, setSearchOpen] = useState(false)
 	const [inputText, setInputText] = useState('')
 	const inputRef = useRef(null)
@@ -50,7 +54,11 @@ function SearchBar() {
 	)
 
 	function handleInput(event) {
-		setInputText(event.target.value)
+		const text = event.target.value
+		setInputText(text)
+		if (text.length > 0)
+			history.push(`${SEARCH_PATH}/${encodeURIComponent(text)}/1`)
+		else history.push('/')
 	}
 
 	function handleInputFocus() {
@@ -60,6 +68,7 @@ function SearchBar() {
 	function closeSearchBar() {
 		setInputText('')
 		setSearchOpen(false)
+		history.push('/')
 	}
 
 	function openSearchBar() {

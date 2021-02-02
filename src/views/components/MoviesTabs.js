@@ -14,7 +14,7 @@ function MoviesTabs() {
 					className={`tab${
 						isTabSelected(key, index) ? ' tab-selected' : ''
 					}`}
-					onClick={() => history.push(`/${key}`)}>
+					onClick={() => history.push(`/${key}/1`)}>
 					{movieFilters.get(key)}
 				</button>
 			))}
