@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit'
 import {
 	fetchMoviesByFilter,
+	fetchMoviesByQuery,
 	setPaginatorSize,
 	initializePaginator,
 	changeCurrentPage
@@ -39,6 +40,26 @@ const moviesReducer = createReducer(
 			requestError: null
 		}),
 		[fetchMoviesByFilter.rejected]: (state, action) => ({
+			...state,
+			isRequestPending: false,
+			requestError: action.payload
+		}),
+		[fetchMoviesByQuery.pending]: (state) => ({
+			...state,
+			isRequestPending: true,
+			requestError: null
+		}),
+		[fetchMoviesByQuery.fulfilled]: (state, action) => ({
+			...state,
+			pagination: {
+				page: action.payload.page,
+				totalPages: action.payload.totalPages
+			},
+			movieList: action.payload.results,
+			isRequestPending: false,
+			requestError: null
+		}),
+		[fetchMoviesByQuery.rejected]: (state, action) => ({
 			...state,
 			isRequestPending: false,
 			requestError: action.payload

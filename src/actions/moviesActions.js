@@ -1,9 +1,8 @@
 import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
-import { getMovies } from '../api/apiMovieDB'
-import { fetchConfiguration } from './configurationActions'
-import { fetchGenres } from './genresActions'
+import { getMovies, searchMovies } from '../api/apiMovieDB'
 import getDefaultMovieFilter from '../utils/getDefaultMovieFilter'
 import handleRequestError from '../utils/handleRequestError'
+import fetchMoviesStartupData from '../utils/fetchMoviesStartupData'
 
 export const fetchMoviesByFilter = createAsyncThunk(
 	'fetchMoviesByFilter',
@@ -13,10 +12,23 @@ export const fetchMoviesByFilter = createAsyncThunk(
 	) => {
 		try {
 			const response = await getMovies(filter, page)
-			if (!imagesConfig) {
-				dispatch(fetchConfiguration())
-				dispatch(fetchGenres())
-			}
+			if (!imagesConfig) fetchMoviesStartupData(dispatch)
+			return response.data
+		} catch (err) {
+			return handleRequestError(err, rejectWithValue)
+		}
+	}
+)
+
+export const fetchMoviesByQuery = createAsyncThunk(
+	'fetchMoviesByQuery',
+	async (
+		{ imagesConfig, query, page = 1 },
+		{ rejectWithValue, dispatch }
+	) => {
+		try {
+			const response = await searchMovies(query, page)
+			if (!imagesConfig) fetchMoviesStartupData(dispatch)
 			return response.data
 		} catch (err) {
 			return handleRequestError(err, rejectWithValue)

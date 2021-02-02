@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { fetchConfiguration } from '../../actions/configurationActions'
-import { fetchGenres } from '../../actions/genresActions'
+import fetchMoviesStartupData from '../../utils/fetchMoviesStartupData'
 import Footer from './Footer'
 import Header from './Header'
 import Main from './Main'
@@ -10,8 +9,7 @@ function App() {
 	const dispatch = useDispatch()
 
 	useEffect(() => {
-		dispatch(fetchConfiguration())
-		dispatch(fetchGenres())
+		fetchMoviesStartupData(dispatch)
 		// eslint-disable-next-line
 	}, [])
 
