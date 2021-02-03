@@ -1,13 +1,23 @@
 import { useRef, useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useRouteMatch } from 'react-router-dom'
 import { SEARCH_PATH } from '../../utils/consts/routePaths'
 
 function SearchBar() {
 	const history = useHistory()
+	const match = useRouteMatch(`${SEARCH_PATH}/:query`)
+	const query = match ? match.params.query : null
 
 	const [isSearchOpen, setSearchOpen] = useState(false)
 	const [inputText, setInputText] = useState('')
 	const inputRef = useRef(null)
+
+	useEffect(() => {
+		if (!query) clearInput()
+	}, [query])
+
+	function clearInput() {
+		setInputText('')
+	}
 
 	useEffect(addAppEventListener)
 
@@ -66,7 +76,7 @@ function SearchBar() {
 	}
 
 	function closeSearchBar() {
-		setInputText('')
+		clearInput()
 		setSearchOpen(false)
 		history.push('/')
 	}

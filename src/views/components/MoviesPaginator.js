@@ -12,6 +12,7 @@ import useScreenSize from '../../utils/hooks/useScreenSize'
 import { VERY_SMALL_WIDTH, SMALL_WIDTH } from '../../utils/consts/screenSizes'
 import { VERY_SMALL, SMALL, BIG } from '../../utils/consts/paginatorSize'
 import { INVISIBLE, NONE } from '../../utils/consts/componentAttributes'
+import { SEARCH_PATH } from '../../utils/consts/routePaths'
 
 function MoviesPaginator({ pagination, match, isInvisible }) {
 	const dispatch = useDispatch()
@@ -22,6 +23,7 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 	const movieFilter = match.params.movieFilter
 		? match.params.movieFilter
 		: getDefaultMovieFilter()
+	const query = match.params.query
 	const page = match.params.page ? Number(match.params.page) : 1
 
 	const isScreenSizeVerySmall = useScreenSize(VERY_SMALL_WIDTH)
@@ -62,7 +64,7 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 				onClick={goToPreviousPage}>
 				<i className='fas fa-angle-left'></i>
 			</button>
-			{createPageLinks()}
+			{createPageButtons()}
 			<button
 				className={
 					'paginator-button-control' +
@@ -83,14 +85,26 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 	)
 
 	function goToFirstPage() {
-		if (page > 1) history.push(`/${movieFilter}/${1}`)
+		if (page > 1) {
+			if (query) {
+				history.push(`${SEARCH_PATH}/${query}/${1}`)
+			} else {
+				history.push(`/${movieFilter}/${1}`)
+			}
+		}
 	}
 
 	function goToPreviousPage() {
-		if (page > 1) history.push(`/${movieFilter}/${page - 1}`)
+		if (page > 1) {
+			if (query) {
+				history.push(`${SEARCH_PATH}/${query}/${page - 1}`)
+			} else {
+				history.push(`/${movieFilter}/${page - 1}`)
+			}
+		}
 	}
 
-	function createPageLinks() {
+	function createPageButtons() {
 		const pageButtons = []
 		for (
 			let pageNumber = paginator.pages[paginator.start];
@@ -115,15 +129,31 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 	}
 
 	function goToPage(pageNumber) {
-		history.push(`/${movieFilter}/${pageNumber}`)
+		if (query) {
+			history.push(`${SEARCH_PATH}/${query}/${pageNumber}`)
+		} else {
+			history.push(`/${movieFilter}/${pageNumber}`)
+		}
 	}
 
 	function goToNextPage() {
-		if (page < totalPages) history.push(`/${movieFilter}/${page + 1}`)
+		if (page < totalPages) {
+			if (query) {
+				history.push(`${SEARCH_PATH}/${query}/${page + 1}`)
+			} else {
+				history.push(`/${movieFilter}/${page + 1}`)
+			}
+		}
 	}
 
 	function goToLastPage() {
-		if (page < totalPages) history.push(`/${movieFilter}/${totalPages}`)
+		if (page < totalPages) {
+			if (query) {
+				history.push(`${SEARCH_PATH}/${query}/${totalPages}`)
+			} else {
+				history.push(`/${movieFilter}/${totalPages}`)
+			}
+		}
 	}
 }
 

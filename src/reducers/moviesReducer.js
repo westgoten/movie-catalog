@@ -93,7 +93,6 @@ const moviesReducer = createReducer(
 						const pos = current + availableSpace
 						if (state.paginator.pages[pos]) {
 							end = pos
-							availableSpace -= end - current
 							break
 						}
 					}
