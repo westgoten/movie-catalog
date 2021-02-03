@@ -2,7 +2,10 @@ import { useRouteMatch } from 'react-router-dom'
 import { useEffect, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
-import { fetchMoviesByFilter } from '../../actions/moviesActions'
+import {
+	fetchMoviesByFilter,
+	fetchMoviesByQuery
+} from '../../actions/moviesActions'
 import MoviesTabs from '../components/MoviesTabs'
 import MoviesGrid from '../components/MoviesGrid'
 import MoviesPaginator from '../components/MoviesPaginator'
@@ -35,21 +38,50 @@ function MoviesPage() {
 
 	const match = useRouteMatch()
 	const movieFilter = match.params.movieFilter
+	const query = match.params.query
 	const page = match.params.page
 	const isPathValid = useCallback(
 		() =>
 			match.path === '/' ||
-			(movieFilters.get(movieFilter) && isPageValid(page)),
-		[match.path, movieFilter, page]
+			((isQueryValid(query) || isMovieFilterValid(movieFilter)) &&
+				isPageValid(page)),
+		[match.path, movieFilter, page, query]
 	)
 
+	function isQueryValid(query) {
+		return query && query.length > 0 ? true : false
+	}
+
+	function isMovieFilterValid(movieFilter) {
+		return movieFilters.get(movieFilter) ? true : false
+	}
+
 	useEffect(() => {
+		console.log('MoviesPage useEffect')
 		if (isPathValid() && !isConfigurationPending) {
-			dispatch(
-				fetchMoviesByFilter({ imagesConfig, filter: movieFilter, page })
-			)
+			console.log('MoviesPage useEffect: dispatch')
+			if (query) {
+				console.log('Dispatch SEARCH!!')
+				dispatch(fetchMoviesByQuery({ imagesConfig, query, page }))
+			} else {
+				console.log('Dispatch FILTER!!')
+				dispatch(
+					fetchMoviesByFilter({
+						imagesConfig,
+						filter: movieFilter,
+						page
+					})
+				)
+			}
 		}
-	}, [movieFilter, page, isPathValid, isConfigurationPending, imagesConfig])
+	}, [
+		movieFilter,
+		page,
+		isPathValid,
+		isConfigurationPending,
+		imagesConfig,
+		query
+	])
 
 	return isPathValid() ? (
 		<div className='movies-page'>

@@ -55,7 +55,7 @@ function MobileSearchBar() {
 	}
 
 	function handleConfirmation(event) {
-		if (event.keyCode === 13) search()
+		if (event.keyCode === 13 && !event.repeat) search()
 	}
 
 	function search() {
