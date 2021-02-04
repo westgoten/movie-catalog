@@ -61,7 +61,7 @@ function MobileSearchBar() {
 	function search() {
 		if (inputText.length > 0) {
 			closeSearchBar()
-			history.push(`${SEARCH_PATH}/${encodeURIComponent(inputText)}/1`)
+			history.push(`${SEARCH_PATH}/${inputText}/1`)
 		}
 	}
 

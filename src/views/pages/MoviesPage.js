@@ -9,6 +9,7 @@ import {
 import MoviesTabs from '../components/MoviesTabs'
 import MoviesGrid from '../components/MoviesGrid'
 import MoviesPaginator from '../components/MoviesPaginator'
+import MoviesSearchTitle from '../components/MoviesSearchTitle'
 import ErrorWarning from '../components/ErrorWarning'
 import PageNotFound from '../components/PageNotFound'
 import Loader from '../components/Loader'
@@ -91,7 +92,11 @@ function MoviesPage() {
 				<ErrorWarning requestError={requestError} />
 			) : (
 				<>
-					<MoviesTabs />
+					{query ? (
+						<MoviesSearchTitle query={query} />
+					) : (
+						<MoviesTabs />
+					)}
 					<MoviesGrid movieList={movieList} />
 				</>
 			)}

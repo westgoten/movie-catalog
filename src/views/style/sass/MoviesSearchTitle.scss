@@ -1,0 +1,14 @@
+@use 'consts' as *;
+@use 'mixins';
+
+.search-title-container {
+	@include mixins.movies-page-top-component;
+}
+
+.search-title {
+	font-size: 1.5rem;
+}
+
+.search-title-query {
+	color: $theme-secondary-color;
+}

@@ -1,16 +1,14 @@
 @use 'consts' as *;
+@use 'mixins';
 
 $tab-border-width: 1px;
 $tab-border-radius: 4px;
 $tab-border-color: rgba($theme-primary-text-color, 0.25);
-$tab-container-margin-bottom: 3.375rem;
 
 .tab-container {
-	max-width: 95%;
+	@include mixins.movies-page-top-component;
 	display: inline-flex;
 	align-items: center;
-	margin-top: 1rem;
-	margin-bottom: $tab-container-margin-bottom;
 	font-size: $base-font-size;
 
 	@media (max-width: $very-small-width) {

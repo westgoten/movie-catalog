@@ -66,8 +66,7 @@ function SearchBar() {
 	function handleInput(event) {
 		const text = event.target.value
 		setInputText(text)
-		if (text.length > 0)
-			history.push(`${SEARCH_PATH}/${encodeURIComponent(text)}/1`)
+		if (text.length > 0) history.push(`${SEARCH_PATH}/${text}/1`)
 		else history.push('/')
 	}
 

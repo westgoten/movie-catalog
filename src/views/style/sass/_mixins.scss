@@ -8,3 +8,9 @@
 @mixin reset-link {
 	@include link($theme-primary-text-color);
 }
+
+@mixin movies-page-top-component {
+	max-width: 95%;
+	margin-top: 1rem;
+	margin-bottom: 3.375rem;
+}
