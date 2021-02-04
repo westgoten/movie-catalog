@@ -2,9 +2,10 @@ import axios from './axios'
 import { API_KEY } from '../config'
 import dataHandlers from './dataHandlers'
 
-export const getMovies = (filter, page = 1) => {
+export const getMovies = (cancelToken, filter, page = 1) => {
 	return axios.get(`/movie/${filter}?api_key=${API_KEY}&page=${page}`, {
-		transformResponse: getDataHandlers(dataHandlers.prepareMovies)
+		transformResponse: getDataHandlers(dataHandlers.prepareMovies),
+		cancelToken
 	})
 }
 
@@ -58,13 +59,14 @@ export const getConfiguration = () => {
 	})
 }
 
-export const searchMovies = (query, page = 1) => {
+export const searchMovies = (cancelToken, query, page = 1) => {
 	return axios.get(
 		`/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
 			query
 		)}&page=${page}`,
 		{
-			transformResponse: getDataHandlers(dataHandlers.prepareSearch)
+			transformResponse: getDataHandlers(dataHandlers.prepareSearch),
+			cancelToken
 		}
 	)
 }

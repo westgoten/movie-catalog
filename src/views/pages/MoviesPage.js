@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux'
 import useShallowEqualSelector from '../../utils/hooks/useShallowEqualSelector'
 import {
 	fetchMoviesByFilter,
-	fetchMoviesByQuery
+	fetchMoviesByQuery,
+	setCurrentMoviesRequest
 } from '../../actions/moviesActions'
 import MoviesTabs from '../components/MoviesTabs'
 import MoviesGrid from '../components/MoviesGrid'
@@ -63,16 +64,20 @@ function MoviesPage() {
 			console.log('MoviesPage useEffect: dispatch')
 			if (query) {
 				console.log('Dispatch SEARCH!!')
-				dispatch(fetchMoviesByQuery({ imagesConfig, query, page }))
+				const promise = dispatch(
+					fetchMoviesByQuery({ imagesConfig, query, page })
+				)
+				dispatch(setCurrentMoviesRequest(promise))
 			} else {
 				console.log('Dispatch FILTER!!')
-				dispatch(
+				const promise = dispatch(
 					fetchMoviesByFilter({
 						imagesConfig,
 						filter: movieFilter,
 						page
 					})
 				)
+				dispatch(setCurrentMoviesRequest(promise))
 			}
 		}
 	}, [

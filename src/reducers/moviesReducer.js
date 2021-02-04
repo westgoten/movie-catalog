@@ -2,10 +2,12 @@ import { createReducer } from '@reduxjs/toolkit'
 import {
 	fetchMoviesByFilter,
 	fetchMoviesByQuery,
+	setCurrentMoviesRequest,
 	setPaginatorSize,
 	initializePaginator,
 	changeCurrentPage
 } from '../actions/moviesActions'
+import { ABORT_ERROR } from '../utils/consts/errorNames'
 
 const initialState = {
 	pagination: null,
@@ -18,7 +20,8 @@ const initialState = {
 	},
 	movieList: [],
 	isRequestPending: true,
-	requestError: null
+	requestError: null,
+	currentRequest: null
 }
 
 const moviesReducer = createReducer(
@@ -37,13 +40,21 @@ const moviesReducer = createReducer(
 			},
 			movieList: action.payload.results,
 			isRequestPending: false,
-			requestError: null
+			requestError: null,
+			currentRequest: null
 		}),
-		[fetchMoviesByFilter.rejected]: (state, action) => ({
-			...state,
-			isRequestPending: false,
-			requestError: action.payload
-		}),
+		[fetchMoviesByFilter.rejected]: (state, action) => {
+			const error = action.error
+			if (error && error.name && error.name === ABORT_ERROR) {
+				return state
+			} else {
+				return {
+					...state,
+					isRequestPending: false,
+					requestError: action.payload
+				}
+			}
+		},
 		[fetchMoviesByQuery.pending]: (state) => ({
 			...state,
 			isRequestPending: true,
@@ -57,13 +68,28 @@ const moviesReducer = createReducer(
 			},
 			movieList: action.payload.results,
 			isRequestPending: false,
-			requestError: null
+			requestError: null,
+			currentRequest: null
 		}),
-		[fetchMoviesByQuery.rejected]: (state, action) => ({
-			...state,
-			isRequestPending: false,
-			requestError: action.payload
-		}),
+		[fetchMoviesByQuery.rejected]: (state, action) => {
+			const error = action.error
+			if (error && error.name && error.name === ABORT_ERROR) {
+				return state
+			} else {
+				return {
+					...state,
+					isRequestPending: false,
+					requestError: action.payload
+				}
+			}
+		},
+		[setCurrentMoviesRequest]: (state, action) => {
+			if (state.currentRequest) state.currentRequest.abort()
+			return {
+				...state,
+				currentRequest: action.payload
+			}
+		},
 		[setPaginatorSize]: (state, action) => {
 			console.log('setPaginatorSize: ', action.payload)
 			const totalPages = action.payload.totalPages
