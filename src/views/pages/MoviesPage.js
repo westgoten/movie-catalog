@@ -94,7 +94,7 @@ function MoviesPage() {
 			{isLoading() ? (
 				<Loader />
 			) : hasRequestError() ? (
-				<ErrorWarning requestError={requestError} />
+				<ErrorWarning requestError={requestError} query={query} />
 			) : (
 				<>
 					{query ? (

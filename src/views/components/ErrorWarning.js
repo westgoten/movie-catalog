@@ -1,7 +1,8 @@
 import PageNotFound from './PageNotFound'
 import Warning from './Warning'
+import { NO_SEARCH_RESULTS } from '../../utils/consts/errorMessages'
 
-function ErrorWarning({ requestError }) {
+function ErrorWarning({ requestError, query }) {
 	return requestError && !requestError.errors ? (
 		<Warning
 			message={
@@ -10,6 +11,8 @@ function ErrorWarning({ requestError }) {
 					: requestError
 			}
 		/>
+	) : query ? (
+		<Warning message={NO_SEARCH_RESULTS} />
 	) : (
 		<PageNotFound />
 	)
