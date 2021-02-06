@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NONE, VISIBLE } from '../../utils/consts/componentAttributes'
 import OpacityLayer from './OpacityLayer'
+import { AUTH_PATH, WATCHLIST_PATH } from '../../utils/consts/routePaths'
 
 function SideNavbar() {
 	const [isNavbarOpen, setNavbarOpen] = useState(false)
@@ -25,7 +26,7 @@ function SideNavbar() {
 				</NavLink>
 				<NavLink
 					exact
-					to='/watchlist'
+					to={WATCHLIST_PATH}
 					className='side-navbar-item'
 					activeClassName='side-navbar-item-selected'
 					onClick={closeNavbar}>
@@ -33,7 +34,7 @@ function SideNavbar() {
 				</NavLink>
 				<NavLink
 					exact
-					to='/auth'
+					to={AUTH_PATH}
 					className='side-navbar-item'
 					activeClassName='side-navbar-item-selected'
 					onClick={closeNavbar}>

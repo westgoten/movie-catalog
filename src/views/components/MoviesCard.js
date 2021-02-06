@@ -6,6 +6,7 @@ import { VISIBLE, NONE } from '../../utils/consts/componentAttributes'
 import { NO_RATING } from '../../utils/consts/movieRating'
 import { POSTER_SIZE, ORIGINAL_SIZE } from '../../utils/consts/imageSizes'
 import intersectionObserver from '../../utils/intersectionObserver'
+import { MOVIE_DETAILS_PATH } from '../../utils/consts/routePaths'
 
 function MoviesCard({ movie }) {
 	const imageRef = useRef(null)
@@ -28,7 +29,9 @@ function MoviesCard({ movie }) {
 
 	return (
 		<div className='movies-card'>
-			<Link to='/' className='movies-card-image-link'>
+			<Link
+				to={`${MOVIE_DETAILS_PATH}/${movie.id}`}
+				className='movies-card-image-link'>
 				{hasFullyLoaded ? null : (
 					<Loader className='movies-card-loader' />
 				)}
@@ -49,7 +52,9 @@ function MoviesCard({ movie }) {
 			</Link>
 			<div className='movies-card-overview'>
 				<span className='movies-card-name'>
-					<Link to='/' className='movies-card-link'>
+					<Link
+						to={`${MOVIE_DETAILS_PATH}/${movie.id}`}
+						className='movies-card-link'>
 						{movie.title}
 					</Link>
 				</span>
