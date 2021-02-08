@@ -1,4 +1,4 @@
-# Movie Catalog
+# Movie Catalog [WORK IN PROGRESS]
 
 _Find your next movie or create your watchlist with this React web app_
 
