@@ -80,6 +80,7 @@ function MoviesPage() {
 				dispatch(setCurrentMoviesRequest(promise))
 			}
 		}
+		// eslint-disable-next-line
 	}, [
 		movieFilter,
 		page,

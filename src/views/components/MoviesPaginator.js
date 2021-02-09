@@ -31,6 +31,7 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 
 	useEffect(() => {
 		dispatch(initializePaginator(totalPages))
+		// eslint-disable-next-line
 	}, [totalPages])
 
 	useEffect(() => {
@@ -40,10 +41,12 @@ function MoviesPaginator({ pagination, match, isInvisible }) {
 			? SMALL
 			: BIG
 		dispatch(setPaginatorSize(paginatorSize, totalPages))
+		// eslint-disable-next-line
 	}, [isScreenSizeVerySmall, isScreenSizeSmall, totalPages])
 
 	useEffect(() => {
 		dispatch(changeCurrentPage(page, totalPages))
+		// eslint-disable-next-line
 	}, [page, totalPages])
 
 	return (
