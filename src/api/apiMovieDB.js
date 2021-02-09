@@ -1,6 +1,7 @@
 import axios from './axios'
-import { API_KEY } from '../config'
 import dataHandlers from './dataHandlers'
+
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export const getMovies = (cancelToken, filter, page = 1) => {
 	return axios.get(`/movie/${filter}?api_key=${API_KEY}&page=${page}`, {
