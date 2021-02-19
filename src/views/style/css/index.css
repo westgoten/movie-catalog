@@ -334,6 +334,23 @@
   }
 }
 
+.movies-details-overview {
+  display: flex;
+  background-color: blue;
+}
+
+.movies-details-overview-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: darkcyan;
+}
+
+.movies-details-overview-facts {
+  display: flex;
+  background-color: red;
+}
+
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
