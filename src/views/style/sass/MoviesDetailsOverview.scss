@@ -1,16 +1,71 @@
+@use 'consts' as *;
+@use 'mixins';
+
+$overview-font-size: 16px;
+
 .movies-details-overview {
 	display: flex;
-	background-color: blue;
+	background-color: rgba($color: black, $alpha: 0.5);
+}
+
+.movies-details-overview-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 }
 
 .movies-details-overview-content {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	background-color: darkcyan;
+	flex-grow: 1;
+	padding: 1rem;
+}
+
+.movies-details-overview-title {
+	margin: 0 {
+		bottom: 0.75rem;
+	}
+	color: $theme-secondary-color;
+}
+
+.movies-details-overview-tagline {
+	font-size: $overview-font-size;
+	font-style: italic;
+}
+
+.movies-details-overview-button {
+	align-self: flex-start;
+	margin: 0.75rem 0 1.25rem 0;
+	@include mixins.reset-button;
+	background-color: green;
+	padding: 8px 16px;
+	color: $theme-primary-text-color;
+	font-size: 16px;
+	border-radius: 4px;
+	cursor: pointer;
+
+	&:active {
+		background-color: lighten($color: green, $amount: 8);
+	}
+}
+
+.movies-details-overview-button-text {
+	margin-left: 8px;
+}
+
+.movies-details-overview-description {
+	font-size: $overview-font-size;
+	margin-bottom: 1.25rem;
+}
+
+.movies-details-overview-genres {
+	font-size: $overview-font-size;
 }
 
 .movies-details-overview-facts {
 	display: flex;
-	background-color: red;
+	justify-content: space-between;
+	background-color: black;
+	padding: 1rem;
 }

@@ -14,3 +14,10 @@
 	margin-top: 1rem;
 	margin-bottom: 3.375rem;
 }
+
+@mixin reset-button {
+	outline: 0;
+	background: none;
+	border: none;
+	padding: 0;
+}
