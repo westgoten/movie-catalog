@@ -25,13 +25,25 @@ function MoviesDetailsOverview() {
 						foe by the name of the Cheetah.
 					</p>
 					<p className='movies-details-overview-genres'>
-						Genres: <span></span>
+						Genres:
+						<span className='movies-details-overview-genre'>
+							Fantasy
+						</span>
 					</p>
 				</div>
 				<div className='movies-details-overview-facts'>
-					<span>Release date</span>
-					<span>Duration</span>
-					<span>Budget</span>
+					<span>
+						<i class='far fa-calendar-alt movies-details-overview-facts-icon'></i>
+						Release date: 15.12.2020
+					</span>
+					<span>
+						<i class='far fa-clock movies-details-overview-facts-icon'></i>
+						Duration: 2h 32m
+					</span>
+					<span>
+						<i class='far fa-money-bill-alt movies-details-overview-facts-icon'></i>
+						Budget: $200,000,000
+					</span>
 				</div>
 			</div>
 		</div>
